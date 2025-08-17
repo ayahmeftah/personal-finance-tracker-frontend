@@ -5,6 +5,7 @@ import ProfileLink from './ProfileLink'
 import TransactionsLink from './TransactionsLink'
 import UserInformation from './UserInformation'
 
+
 const NavBar = () => {
   return (
     <div>
