@@ -1,9 +1,10 @@
 import React from 'react'
+import {Link} from 'react-dom'
 
 const UserInformation = () => {
   return (
     <div>
-      <Link to='/userInfo'>Profile</Link>
+      <Link to='/userInfo'>User information</Link>
     </div>
   )
 }
