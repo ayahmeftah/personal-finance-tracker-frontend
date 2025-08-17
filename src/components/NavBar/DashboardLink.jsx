@@ -1,10 +1,10 @@
 import React from 'react'
-import {Link} from 'react-dom'
+import {Link} from 'react-router'
 
 const DashboardLink = () => {
   return (
     <div>
-      <Link to='/dashboard'>Dashboard</Link>
+      <Link to='/'>Dashboard</Link>
     </div>
   )
 }

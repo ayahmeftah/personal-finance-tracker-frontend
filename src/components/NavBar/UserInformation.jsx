@@ -4,7 +4,7 @@ import {Link} from 'react-dom'
 const UserInformation = () => {
   return (
     <div>
-      <Link to='/userInfo'>User information</Link>
+      {/* <Link to='/userInfo'>User information</Link> */}
     </div>
   )
 }

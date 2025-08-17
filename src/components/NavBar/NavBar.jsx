@@ -9,14 +9,14 @@ import DashboardLink from './DashboardLink'
 
 const NavBar = () => {
   return (
-    <div>
-      <UserInformation/>     
+    <>
+      {/* <UserInformation/>      */}
       <DashboardLink/>
-      <TransactionsLink/>
+      {/* <TransactionsLink/>
       <CategoryLink/>
       <LogoutLink/>
-      <ProfileLink/> 
-    </div>
+      <ProfileLink/>  */}
+    </>
   )
 }
 
