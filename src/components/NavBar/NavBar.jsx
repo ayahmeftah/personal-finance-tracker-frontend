@@ -8,7 +8,11 @@ import UserInformation from './UserInformation'
 const NavBar = () => {
   return (
     <div>
-
+      <CategoryLink/>
+      <LogoutLink/>
+      <ProfileLink/>
+      <TransactionsLink/>
+      <UserInformation/>
     </div>
   )
 }
