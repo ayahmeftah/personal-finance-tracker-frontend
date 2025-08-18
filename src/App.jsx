@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router'
 import SignUp from './components/SignUpForm/SignUpForm'
 import Dashboard from './components/Dashboard/Dashboard'
-
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'))
