@@ -52,12 +52,12 @@ const CategoryForm = () => {
        <h1>{categoryToEdit && categoryToEdit._id ? 'Edit Category' : 'Add Category'}</h1>
         <form onSubmit={handleSubmitForm} >
         <label htmlFor="name">Category Name: </label>
-        <input class='name' id='name' value={formData.name}></input>
+        <input class='name' id='name' value={formData.name} onChange={handleFormChange}></input>
         <label htmlFor="type">Category Type: </label>
-        <input class='type' id='type' value={formData.title}>
-            <select>
-                <option></option>
-                <option></option>
+        <input class='type' id='type' value={formData.title} onChange={handleFormChange}>
+            <select id='select-category-type' value={selectedType}>
+                <option value='income'>Income</option>
+                <option value='expense'>Expense</option>
             </select>
         </input>
         </form>
