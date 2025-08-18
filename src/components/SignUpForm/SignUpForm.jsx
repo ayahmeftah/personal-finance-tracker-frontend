@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 
-function SignUp() {
+function SignUp({ onSignUp }) {
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -21,11 +21,12 @@ function SignUp() {
         formData.append('profilePic', profilePic)
       }
 
-      await axios.post('http://localhost:3000/auth/signup', formData, {
+      const res = await axios.post('http://localhost:3000/auth/signup', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       })
 
-      alert('User registered, please login')
+      localStorage.setItem('token', res.data.token)
+      onSignUp(res.data.token)
       navigate('/')
     } catch (err) {
       alert(err.response?.data?.message || 'Registration failed')
