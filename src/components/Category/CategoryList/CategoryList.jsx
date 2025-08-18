@@ -1,11 +1,17 @@
 import EditCategoryButton from './EditCategoryButton/EditCategoryButton'
 import getAllCategories from '../../../../lib/category-api'
+import { BeatLoader } from 'react-spinners'
+
 const categoryList = () => {
     
     return (
         <>
             <h1>Categories</h1>
             {
+                loading 
+                ?
+                <BeatLoader/>
+                :
                 getAllCategories.length
                 ?
                 getAllCategories.map((category) => {
