@@ -8,6 +8,7 @@ import SignUp from './components/SignUpForm/SignUpForm'
 import LogoutButton from './components/LogoutButton/LogoutButton'
 import Dashboard from './components/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+import CategoryForm from './components/Category/CategoryForm/CategoryForm'
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/" element={
             <ProtectedRoute>
               <Dashboard />
+              <CategoryForm />
             </ProtectedRoute>
           } />
         </Routes>
