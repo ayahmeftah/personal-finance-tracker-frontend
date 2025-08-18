@@ -32,8 +32,20 @@ const CategoryForm = () => {
         let response 
         if (categoryToEdit && categoryToEdit._id) {
             response = await categoryCalls.updateCategory(categoryToEdit._id, formData)
+        } else {
+            response = await categoryCalls.createCategory(formData)
         }
+
+        if (response.status === 201 || response.status === 200) {
+            setFormData({
+                name: '',
+                type: ''
+            })   
+        }
+        setIsSubmitting(false)
     } 
+
+    
     
     return (
        <>
