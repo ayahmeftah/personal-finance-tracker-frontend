@@ -25,14 +25,20 @@ const CategoryForm = () => {
         //     }
         if (!formData.name || !formData.type) {
             alert('Please fill all fields')
+            return
         }
+            if (isSubmitting) return
+        try {
             setIsSubmitting(true)
             const result = await categoryCalls.createCategory(formData)
+            console.log('createCategory -> ', result)
             setFormData({
                 name: '',
                 type: ''
             })
-            setIsSubmitting(false)
+        } catch (error) {
+            console.log(error)
+        }
     } 
 
 
@@ -59,7 +65,7 @@ const CategoryForm = () => {
                 <option value='income'>Income</option>
                 <option value='expense'>Expense</option>
             </select>
-            <button type='submit' disabled={isSubmitting}>Add</button>
+            <button type='submit'>Add</button>
         </form>
        </> 
     ) 
