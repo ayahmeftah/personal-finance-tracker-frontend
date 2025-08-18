@@ -28,6 +28,11 @@ const CategoryForm = () => {
     const handleSubmitForm = async (event) => {
         event.preventDefault()
         if (isSubmitting) return 
+        setIsSubmitting(true)
+        let response 
+        if (categoryToEdit && categoryToEdit._id) {
+            response = await categoryCalls.updateCategory(categoryToEdit._id, formData)
+        }
     } 
     
     return (
