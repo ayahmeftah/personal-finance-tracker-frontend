@@ -1,7 +1,7 @@
 import categoryCalls from '../../../../lib/category-api'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
-const CategoryForm = () => {
+const CategoryForm = ({editCategory}) => {
 
     const [formData, setFormData] = useState({
         name: '',
@@ -41,10 +41,19 @@ const CategoryForm = () => {
         }
     } 
 
+    useEffect(() => {
+        if (editCategory) {
+            setFormData({
+                name: editCategory.name || '',
+                type: editCategory.type || ''
+            })
+        }
+    }, [editCategory])
+
 
     return (
        <>
-       <h1>Add Category</h1>
+       <h1>{editCategory && editCategory._id ? 'Update Category' : 'Add Category'}</h1>
         <form onSubmit={handleSubmitForm} >
         <label htmlFor="name">Category Name: </label>
         <input 
@@ -65,7 +74,7 @@ const CategoryForm = () => {
                 <option value='income'>Income</option>
                 <option value='expense'>Expense</option>
             </select>
-            <button type='submit'>Add</button>
+            <button type='submit'>{editCategory && editCategory._id ? 'Update' : 'Add'}</button>
         </form>
        </> 
     ) 

@@ -39,6 +39,12 @@ const App = () => {
     }
   }
 
+  const [editCategory, setEditCategory] = useState(null)
+
+  const handleEditClick = (category) => {
+      setEditCategory(category)
+  }
+
   return (
     <Router>
       <div>
@@ -48,10 +54,10 @@ const App = () => {
           <Route path="/signup" element={<SignUp onSignUp={handleLogin} />} />
           <Route path="/" element={
             <ProtectedRoute>
-              {/* <CategoryForm /> */}
+              <CategoryForm editCategory={editCategory}/>
               {/* <Dashboard /> */}
-              {/* <CategoryList/> */}
-              <EditCategoryButton />
+              <CategoryList handleEditClick={handleEditClick}/>
+              {/* <EditCategoryButton /> */}
             </ProtectedRoute>
           } />
         </Routes>
