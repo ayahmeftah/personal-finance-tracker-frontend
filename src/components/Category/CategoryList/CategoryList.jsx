@@ -8,11 +8,13 @@ const CategoryList = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-                const token  = localStorage.getItem('token')
-                const data = categoryCalls.getAllCategories(token)
-                setCategories(Array.isArray(data) ? data : [])
-                setLoading(false)
-    },[])
+        const fetchCategories = async () => {
+            const data = await categoryCalls.getAllCategories()
+            setCategories(Array.isArray(data) ? data : [])
+            setLoading(false)
+        }
+        fetchCategories()
+    }, [])
 
     return (
         <>
@@ -25,7 +27,7 @@ const CategoryList = () => {
                 ? 
                 (
                     categories.map((category) => (
-                        <li key={category.id}>
+                        <li key={category._id}>
                             <p>{category.name}</p>
                             <p>{category.type}</p>
                             <EditCategoryButton categoryId={category._id} currentName={category.name} currentType={category.type} />

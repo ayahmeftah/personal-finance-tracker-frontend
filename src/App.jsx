@@ -48,10 +48,10 @@ const App = () => {
           <Route path="/signup" element={<SignUp onSignUp={handleLogin} />} />
           <Route path="/" element={
             <ProtectedRoute>
-              <CategoryForm />
+              {/* <CategoryForm /> */}
               {/* <Dashboard /> */}
               {/* <CategoryList/> */}
-              {/* <EditCategoryButton /> */}
+              <EditCategoryButton />
             </ProtectedRoute>
           } />
         </Routes>
