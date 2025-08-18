@@ -3,7 +3,12 @@ import { NavLink, useNavigate } from 'react-router'
 import './NavBar.css'
 import { useState, useEffect } from 'react'
 import userCalls from '../../../lib/user-api'
-import LogoutButton from '../LogoutButton/LogoutButton'
+import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
+import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
+import AccountBalanceOutlinedIcon from '@mui/icons-material/AccountBalanceOutlined';
+import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 const NavBar = () => {
   const [user, setUser] = useState(null)
@@ -40,27 +45,32 @@ const NavBar = () => {
       <ul className="nav-links">
         <li>
           <NavLink to="/" end activeclassname="active">
-            <i className="icon">🏠</i> Dashboard
+            <DashboardOutlinedIcon /> Dashboard
           </NavLink>
         </li>
         <li>
           <NavLink to="/transactions/incomes" activeclassname="active">
-            <i className="icon">💰</i> Income
+            <PaidOutlinedIcon /> Incomes
           </NavLink>
         </li>
         <li>
           <NavLink to="/transactions/expenses" activeclassname="active">
-            <i className="icon">💸</i> Expense
+            <AccountBalanceOutlinedIcon /> Expenses
           </NavLink>
         </li>
         <li>
           <NavLink to="/categories" activeclassname="active">
-            <i className="icon">📂</i> Categories
+            <CategoryOutlinedIcon /> Categories
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/profile" activeclassname="active">
+            <AccountCircleOutlinedIcon /> Profile
           </NavLink>
         </li>
         <li onClick={handleLogout}>
           <NavLink to="/logout" activeclassname="active">
-            <i className="icon">🚪</i> Logout
+            <ExitToAppOutlinedIcon /> Logout
           </NavLink>
         </li>
       </ul>
