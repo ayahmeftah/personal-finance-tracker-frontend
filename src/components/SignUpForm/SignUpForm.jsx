@@ -10,6 +10,8 @@ function SignUp({ onSignUp }) {
 
   const navigate = useNavigate()
 
+  const baseURL = import.meta.env.VITE_BACK_END_SERVER_URL
+
   const handleSubmit = async event => {
     event.preventDefault()
     try {
@@ -21,7 +23,7 @@ function SignUp({ onSignUp }) {
         formData.append('profilePic', profilePic)
       }
 
-      const res = await axios.post('http://localhost:3000/auth/signup', formData, {
+      const res = await axios.post(`${baseURL}/auth/signup`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       })
 
