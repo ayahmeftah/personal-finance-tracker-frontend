@@ -26,7 +26,7 @@ function SignUp() {
       })
 
       alert('User registered, please login')
-      navigate('/login')
+      navigate('/')
     } catch (err) {
       alert(err.response?.data?.message || 'Registration failed')
     }
