@@ -1,5 +1,9 @@
+import categoryCalls from '../../../../lib/category-api'
+
 const CategoryForm = () => {
-    
+    const handleSubmitForm = () => {
+        
+    } 
     
     return (
        <>
@@ -9,6 +13,7 @@ const CategoryForm = () => {
         <label htmlFor="type"></label>
         <input></input>
         </form>
+        <button onClick={}></button>
        </> 
     ) 
 }
