@@ -8,6 +8,7 @@ import SignUp from './components/SignUpForm/SignUpForm'
 import LogoutButton from './components/LogoutButton/LogoutButton'
 import Dashboard from './components/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+import NavBar from './components/NavBar/NavBar'
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -39,12 +40,13 @@ const App = () => {
   return (
     <Router>
       <div>
-        {token ? <LogoutButton onLogout={handleLogout} /> : null}
+        {/* {token ? <LogoutButton onLogout={handleLogout} /> : null} */}
         <Routes>
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignUp onSignUp={handleLogin} />} />
           <Route path="/" element={
             <ProtectedRoute>
+              <NavBar/>
               <Dashboard />
             </ProtectedRoute>
           } />

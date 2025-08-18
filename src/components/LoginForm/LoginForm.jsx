@@ -8,10 +8,12 @@ function LoginForm({ onLogin }) {
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
+  const baseURL = import.meta.env.VITE_BACK_END_SERVER_URL
+
   const handleSubmit = async event => {
     event.preventDefault()
     try {
-      const res = await axios.post('http://localhost:3000/auth/login', {
+      const res = await axios.post(`${baseURL}/auth/login`, {
         username,
         password
       })
