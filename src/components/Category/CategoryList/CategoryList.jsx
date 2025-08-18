@@ -1,4 +1,4 @@
-// import EditCategoryButton from './CategoryList/EditCategoryButton'
+import EditCategoryButton from "../EditCategoryButton/EditCategoryButton.jsx"
 import categoryCalls from '../../../../lib/category-api'
 import { BeatLoader } from 'react-spinners'
 import {useEffect, useState} from 'react'
@@ -28,7 +28,7 @@ const CategoryList = () => {
                         <li key={category.id}>
                             <p>{category.name}</p>
                             <p>{category.type}</p>
-                            {/* <EditCategoryButton categoryId={category._id} /> */}
+                            <EditCategoryButton categoryId={category._id} currentName={category.name} currentType={category.type} />
                         </li>
                     ))
                 ) : (

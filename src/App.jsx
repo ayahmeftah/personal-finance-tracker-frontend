@@ -10,6 +10,7 @@ import Dashboard from './components/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import CategoryForm from './components/Category/CategoryForm/CategoryForm'
 import CategoryList from './components/Category/CategoryList/CategoryList'
+import EditCategoryButton from './components/Category/EditCategoryButton/EditCategoryButton'
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -47,9 +48,10 @@ const App = () => {
           <Route path="/signup" element={<SignUp onSignUp={handleLogin} />} />
           <Route path="/" element={
             <ProtectedRoute>
-              {/* <CategoryForm /> */}
+              <CategoryForm />
               {/* <Dashboard /> */}
-              <CategoryList/>
+              {/* <CategoryList/> */}
+              {/* <EditCategoryButton /> */}
             </ProtectedRoute>
           } />
         </Routes>
