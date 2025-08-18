@@ -5,7 +5,6 @@ import { jwtDecode } from 'jwt-decode'
 
 import LoginForm from './components/LoginForm/LoginForm'
 import SignUp from './components/SignUpForm/SignUpForm'
-import LogoutButton from './components/LogoutButton/LogoutButton'
 import Dashboard from './components/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import NavBar from './components/NavBar/NavBar'
