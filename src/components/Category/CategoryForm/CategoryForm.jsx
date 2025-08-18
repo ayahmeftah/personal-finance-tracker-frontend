@@ -2,21 +2,21 @@ import categoryCalls from '../../../../lib/category-api'
 import {useState, useEffect} from 'react'
 
 const CategoryForm = () => {
-    const [categoryToEdit, SetCategoryToEdit] = useState(null)
+    // const [categoryToEdit, SetCategoryToEdit] = useState(null)
     
     const [formData, setFormData] = useState({
         name: '',
         type: ''
     })
 
-    useEffect(() => {
-        if (categoryToEdit) {
-            setFormData({
-                name: categoryToEdit.name || '',
-                type: categoryToEdit.type || ''
-            })
-        }
-    }, [categoryToEdit])
+    // useEffect(() => {
+    //     if (categoryToEdit) {
+    //         setFormData({
+    //             name: categoryToEdit.name || '',
+    //             type: categoryToEdit.type || ''
+    //         })
+    //     }
+    // }, [categoryToEdit])
     
     const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -29,12 +29,12 @@ const CategoryForm = () => {
         event.preventDefault()
         if (isSubmitting) return 
         setIsSubmitting(true)
-        let response 
-        if (categoryToEdit && categoryToEdit._id) {
-            response = await categoryCalls.updateCategory(categoryToEdit._id, formData)
-        } else {
-            response = await categoryCalls.createCategory(formData)
-        }
+        let response = await categoryCalls.createCategory(formData) 
+        // if (categoryToEdit && categoryToEdit._id) {
+        //     response = await categoryCalls.updateCategory(categoryToEdit._id, formData)
+        // } else {
+        //     response = await categoryCalls.createCategory(formData)
+        // }
 
         if (response.status === 201 || response.status === 200) {
             setFormData({
@@ -49,19 +49,20 @@ const CategoryForm = () => {
     
     return (
        <>
-       <h1>{categoryToEdit && categoryToEdit._id ? 'Edit Category' : 'Add Category'}</h1>
+       {/* <h1>{categoryToEdit && categoryToEdit._id ? 'Edit Category' : 'Add Category'}</h1> */}
+       <h1>Add Category</h1>
         <form onSubmit={handleSubmitForm} >
         <label htmlFor="name">Category Name: </label>
-        <input class='name' id='name' value={formData.name} onChange={handleFormChange}></input>
+        <input className='name' id='name' value={formData.name} onChange={handleFormChange}></input>
         <label htmlFor="type">Category Type: </label>
-        <input class='type' id='type' value={formData.title} onChange={handleFormChange}>
-            <select id='select-category-type' value={selectedType}>
+            <select id='select-category-type' value={formData.type} onChange={handleFormChange}>
+                <option value="">Select type</option>
                 <option value='income'>Income</option>
                 <option value='expense'>Expense</option>
             </select>
-        </input>
         </form>
-        <button>{categoryToEdit && categoryToEdit._id ? 'update' : 'add'}</button>
+        {/* <button>{categoryToEdit && categoryToEdit._id ? 'update' : 'add'}</button> */}
+        <button>Add</button>
        </> 
     ) 
 }
