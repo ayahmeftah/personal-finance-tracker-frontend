@@ -24,7 +24,7 @@ const CategoryForm = () => {
         //     })   
         //     }
         if (!formData.name || !formData.type) {
-            prompt('Please fill all fields')
+            alert('Please fill all fields')
         }
             setIsSubmitting(true)
             const result = await categoryCalls.createCategory(formData)

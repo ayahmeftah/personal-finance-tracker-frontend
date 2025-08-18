@@ -9,6 +9,7 @@ import LogoutButton from './components/LogoutButton/LogoutButton'
 import Dashboard from './components/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import CategoryForm from './components/Category/CategoryForm/CategoryForm'
+import CategoryList from './components/Category/CategoryList/CategoryList'
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -46,8 +47,9 @@ const App = () => {
           <Route path="/signup" element={<SignUp onSignUp={handleLogin} />} />
           <Route path="/" element={
             <ProtectedRoute>
-              <CategoryForm />
+              {/* <CategoryForm /> */}
               {/* <Dashboard /> */}
+              <CategoryList/>
             </ProtectedRoute>
           } />
         </Routes>
