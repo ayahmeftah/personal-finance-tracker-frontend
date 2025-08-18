@@ -1,16 +1,46 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { NavLink } from 'react-router'
 import './NavBar.css'
 
-const NavBar = () => {
+
+const NavBar = ({user}) => {
+
+  const profilePic = user?.profilePic || "/images/default-profile-img.jpg"
+  const name = user?.name
+
   return (
     <div className='navbar'>
-      <ul>
-        <li><Link to='/'>Dashboard</Link></li>
-        <li><Link to='/transactions/incomes'>Incomes</Link></li>
-        <li><Link to='/transactions/expenses'>Expenses</Link></li>
-        <li><Link to='/categories'>Categories</Link></li>
-        <li><Link to='/profile'>Profile</Link></li>
+      <div className="profile">
+        <img src={profilePic} alt="Profile" className="profile-pic" />
+        <h3>{name}</h3>
+      </div>
+
+      <ul className="nav-links">
+        <li>
+          <NavLink to="/" end activeclassname="active">
+            <i className="icon">🏠</i> Dashboard
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/transactions/incomes" activeclassname="active">
+            <i className="icon">💰</i> Income
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/transactions/expenses" activeclassname="active">
+            <i className="icon">💸</i> Expense
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/categories" activeclassname="active">
+            <i className="icon">📂</i> Categories
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/logout" activeclassname="active">
+            <i className="icon">🚪</i> Logout
+          </NavLink>
+        </li>
       </ul>
     </div>
   )
