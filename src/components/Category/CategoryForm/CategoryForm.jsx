@@ -26,6 +26,13 @@ const CategoryForm = () => {
         if (!formData.name || !formData.type) {
             prompt('Please fill all fields')
         }
+            setIsSubmitting(true)
+            const result = await categoryCalls.createCategory(formData)
+            setFormData({
+                name: '',
+                type: ''
+            })
+            setIsSubmitting(false)
     } 
 
 
@@ -39,6 +46,7 @@ const CategoryForm = () => {
         id='name' 
         value={formData.name} 
         onChange={handleFormChange} 
+        autoComplete='off'
         />
         <label htmlFor="select-category-type">Category Type: </label>
             <select 
@@ -47,11 +55,11 @@ const CategoryForm = () => {
             value={formData.type}
             onChange={handleFormChange}
             >
-                <option value=''>Select type</option>
+                <option value='' disabled>Select type</option>
                 <option value='income'>Income</option>
                 <option value='expense'>Expense</option>
             </select>
-            <button type='submit'>Add</button>
+            <button type='submit' disabled={isSubmitting}>Add</button>
         </form>
        </> 
     ) 
