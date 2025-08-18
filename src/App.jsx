@@ -54,7 +54,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp onSignUp={handleLogin} />} />
           <Route path="/" element={
             <ProtectedRoute>
-              <CategoryForm editCategory={editCategory}/>
+              {/* <CategoryForm editCategory={editCategory}/> */}
               {/* <Dashboard /> */}
               <CategoryList handleEditClick={handleEditClick}/>
               {/* <EditCategoryButton /> */}
