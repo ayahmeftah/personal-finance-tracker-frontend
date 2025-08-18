@@ -40,13 +40,13 @@ const App = () => {
   return (
     <Router>
       <div>
-        {token ? <LogoutButton onLogout={handleLogout} /> : null}
+        {/* {token ? <LogoutButton onLogout={handleLogout} /> : null} */}
         <Routes>
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignUp onSignUp={handleLogin} />} />
           <Route path="/" element={
             <ProtectedRoute>
-              <NavBar user={decodedToken} />
+              <NavBar/>
               <Dashboard />
             </ProtectedRoute>
           } />

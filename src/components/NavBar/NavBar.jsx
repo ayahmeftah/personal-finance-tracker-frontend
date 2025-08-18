@@ -1,18 +1,40 @@
 import React from 'react'
-import { NavLink } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
 import './NavBar.css'
+import { useState, useEffect } from 'react'
+import userCalls from '../../../lib/user-api'
+import LogoutButton from '../LogoutButton/LogoutButton'
 
+const NavBar = () => {
+  const [user, setUser] = useState(null)
+  const navigate = useNavigate()
 
-const NavBar = ({user}) => {
+  const fetchUser = async () => {
+    const res = await userCalls.getUser()
+    if (!res.error) {
+      setUser(res)
+    } else {
+      setUser(null)
+    }
+  }
 
-  const profilePic = user?.profilePic || "/images/default-profile-img.jpg"
-  const name = user?.name
+  useEffect(() => {
+    fetchUser()
+  },[])
+
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    setUser(null);
+    navigate("/login")
+  }
+
+  const profilePic = user?.profilePic ? user.profilePic : "/images/default-profile-img.jpg"
 
   return (
     <div className='navbar'>
       <div className="profile">
         <img src={profilePic} alt="Profile" className="profile-pic" />
-        <h3>{name}</h3>
+        <h3>{user ? user.name : "User"}</h3>
       </div>
 
       <ul className="nav-links">
@@ -36,7 +58,7 @@ const NavBar = ({user}) => {
             <i className="icon">📂</i> Categories
           </NavLink>
         </li>
-        <li>
+        <li onClick={handleLogout}>
           <NavLink to="/logout" activeclassname="active">
             <i className="icon">🚪</i> Logout
           </NavLink>
