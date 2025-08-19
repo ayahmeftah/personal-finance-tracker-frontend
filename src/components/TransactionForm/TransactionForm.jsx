@@ -3,7 +3,7 @@ import transactionsCalls from "../../../lib/transaction-api"
 import categoriesCalls from "../../../lib/category-api"
 import { useState, useEffect } from 'react'
 
-const TransactionForm = ({ transactionType }) => {
+const TransactionForm = ({ transactionType , navigateTo }) => {
 
     const [formData, setFormData] = useState({
         name: "",
@@ -40,6 +40,7 @@ const TransactionForm = ({ transactionType }) => {
                 transactionType 
             })
             
+            if (navigateTo) navigateTo()
         }
     }
 
