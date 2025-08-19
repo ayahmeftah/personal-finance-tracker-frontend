@@ -36,16 +36,26 @@ const DashboardChart = () => {
       aggregated.sort((a, b) => new Date(a.date) - new Date(b.date))
       setChartData(aggregated)
     }
-
-    useEffect(()=>{
-      getChartData()
-    },[])
-
-    return (
-      <div>
-
-      </div>
-    )
   }
+  useEffect(() => {
+    getChartData()
+  }, [])
+
+  return (
+    <div className="dashboard-chart-card">
+      <h3>Income vs Expenses</h3>
+      <ResponsiveContainer width="100%" height={300}>
+        <LineChart data={chartData}>
+          <XAxis dataKey="date" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="income" stroke="#4caf50" strokeWidth={2} />
+          <Line type="monotone" dataKey="expense" stroke="#f44336" strokeWidth={2} />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  )
 }
+
 export default DashboardChart
