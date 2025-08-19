@@ -7,7 +7,7 @@ const IncomesList = () => {
     const navigate = useNavigate()
 
     return (
-        <div>
+        <div className='main-content'>
             <h1>Incomes</h1>
             <button onClick={()=> navigate("/incomes/add")}>
                 + Add Income

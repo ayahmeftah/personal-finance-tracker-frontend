@@ -7,7 +7,7 @@ const ExpensesList = () => {
     const navigate = useNavigate()
 
     return (
-        <div>
+        <div className='main-content'>
             <h1>Expenses</h1>
             <button onClick={()=> navigate("/expenses/add")}>
                 + Add Expense

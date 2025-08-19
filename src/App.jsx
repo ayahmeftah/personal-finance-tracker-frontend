@@ -53,6 +53,31 @@ const App = () => {
               <Dashboard />
             </ProtectedRoute>
           } />
+          <Route path="/incomes" element={
+            <ProtectedRoute>
+              <NavBar />
+              <IncomesList />
+            </ProtectedRoute>
+          } />
+          <Route path="/incomes/add" element={
+            <ProtectedRoute>
+              <NavBar />
+              <AddIncome />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/expenses" element={
+            <ProtectedRoute>
+              <NavBar />
+              <ExpensesList />
+            </ProtectedRoute>
+          } />
+          <Route path="/expenses/add" element={
+            <ProtectedRoute>
+              <NavBar />
+              <AddExpense />
+            </ProtectedRoute>
+          } />
         </Routes>
       </div>
     </Router>
