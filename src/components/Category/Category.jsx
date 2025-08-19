@@ -1,7 +1,8 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CategoryList from '../Category/CategoryList/CategoryList'
 import CategoryForm from '../Category/CategoryForm/CategoryForm'
+import categoryCalls from '../../../lib/category-api'
 
 const Category = () => {
 
@@ -27,6 +28,11 @@ const Category = () => {
         setLoading(false)
     }
 
+    useEffect(() => {
+
+        fetchCategories()
+    }, [])
+
     return (
         <div>
             <h1>Categories</h1>
@@ -34,12 +40,12 @@ const Category = () => {
             {
                 formIsShown
                     ?
-                    <CategoryForm setFormIsShown={setFormIsShown} loading={loading} editCategory={editCategory} fetchCategories={fetchCategories}/>
+                    <CategoryForm setFormIsShown={setFormIsShown} loading={loading} editCategory={editCategory} fetchCategories={fetchCategories} />
                     :
                     null
             }
-            <CategoryForm categories={categories} fetchCategories={fetchCategories} handleEditClick={handleEditClick}/>
-            
+            <CategoryList categories={categories} fetchCategories={fetchCategories} handleEditClick={handleEditClick} />
+
         </div>
     )
 }

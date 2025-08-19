@@ -4,33 +4,24 @@ import { BeatLoader } from 'react-spinners'
 import {useEffect, useState} from 'react'
 import DeleteCategoryButton from "../DeleteCategoryButton/DeleteCategoryButton.jsx"
 
-const CategoryList = ({setEditCategory}) => {
-    const [categories, setCategories] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        
-        fetchCategories()
-    }, [])
+const CategoryList = (props) => {
 
     return (
         <>
-            <h1>Categories</h1>
-            <button>+ Add Category</button>
             {
-                loading ? (
+                props.loading ? (
                     <BeatLoader/>
                 ) : 
-                categories.length > 0 
+                props.categories.length > 0 
                 ? 
                 (
-                    categories.map((category) => (
+                    props.categories.map((category) => (
                         <li key={category._id}>
                             <p>{category.name}</p>
                             <p>{category.type}</p>
                             <div>
-                                <EditCategoryButton categoryId={category._id} setEditCategory={setEditCategory}/>
-                                <DeleteCategoryButton categoryId={category._id}/>
+                                <EditCategoryButton categoryId={category._id} fetchCategories={props.fetchCategories} category={category} handleEditClick={props.handleEditClick}/>
+                                <DeleteCategoryButton categoryId={category._id} fetchCategories={props.fetchCategories}/>
                             </div>
                         </li>
                     ))

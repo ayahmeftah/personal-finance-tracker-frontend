@@ -2,8 +2,8 @@ import categoryCalls from '../../../../lib/category-api'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 
-const CategoryForm = ({ editCategory }) => {
-    const navigate = useNavigate()
+const CategoryForm = (props) => {
+    // const navigate = useNavigate()
     // const location = useLocation() 
 
     const [formData, setFormData] = useState({
@@ -11,56 +11,58 @@ const CategoryForm = ({ editCategory }) => {
         type: ''
     })
 
+    useEffect(() => {
+        if (props.editCategory) {
+            setFormData({
+                name: props.editCategory.name || '',
+                type: props.editCategory.type || ''
+            })
+        }
+    }, [props.editCategory])
+
     const [isSubmitting, setIsSubmitting] = useState(false)
 
     const handleFormChange = (event) => {
+        event.preventDefault()
         setFormData({ ...formData, [event.target.name]: event.target.value })
     }
 
     const handleSubmitForm = async (event) => {
         event.preventDefault()
 
-        // if (!formData.name || !formData.type) {
-        //     alert('Please fill all fields')
-        //     return
-        // }
-        
         if (isSubmitting) return
-        try {
-            setIsSubmitting(true)
-            const result = await categoryCalls.createCategory(formData)
-            console.log('createCategory -> ', result)
+
+        let response
+
+        if (props.editCategory && props.editCategory._id) {
+            response = await categoryCalls.updateCategory(props.editCategory._id, formData)
+        } else {
+            response = await categoryCalls.createCategory(formData)
+        }
+
+        if (response.status === 201 || response.status === 200) {
             setFormData({
                 name: '',
                 type: ''
             })
-        } catch (error) {
-            console.log(error)
+            props.setFormIsShown(false)
+            props.fetchCategories()
         }
-        navigate('/categories')
+
+        setIsSubmitting(false)
     }
-
-    useEffect(() => {
-        if (editCategory) {
-            setFormData({
-                name: editCategory.name || '',
-                type: editCategory.type || ''
-            })
-        }
-    }, [editCategory])
-
 
     return (
         <>
-            <h1>{editCategory && editCategory._id ? 'Update Category' : 'Add Category'}</h1>
+            <h1>{props.editCategory && props.editCategory._id ? 'Update Category' : 'Add Category'}</h1>
             <form onSubmit={handleSubmitForm} >
                 <label htmlFor="name">Category Name: </label>
                 <input
+                    type='text'
                     name='name'
                     id='name'
                     value={formData.name}
                     onChange={handleFormChange}
-                    autoComplete='off'
                 />
                 <label htmlFor="select-category-type">Category Type: </label>
                 <select
@@ -73,7 +75,8 @@ const CategoryForm = ({ editCategory }) => {
                     <option value='income'>Income</option>
                     <option value='expense'>Expense</option>
                 </select>
-                <button type='submit'>{editCategory && editCategory._id ? 'Update' : 'Add'}</button>
+                <button type='submit'>{props.editCategory && props.editCategory._id ? 'Update' : 'Add'}</button>
+                <button onClick={()=> props.setFormIsShown(false)}>Cancel</button>
             </form>
         </>
     )
