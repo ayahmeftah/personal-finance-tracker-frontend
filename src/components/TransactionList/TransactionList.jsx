@@ -7,6 +7,7 @@ import DeleteTransactionButton from './DeleteTransactionButton'
 
 const TransactionList = ({ transactionType }) => {
     const [transactions, setTransactions] = useState([])
+    const [selectedCategory, setSelectedCategory] = useState("all")
 
     const getTransactionsByType = async () => {
         const res = await transactionsCalls.getAllTransactions()
@@ -18,6 +19,14 @@ const TransactionList = ({ transactionType }) => {
     useEffect(() => {
         getTransactionsByType()
     }, [transactionType])
+
+    const uniqueCategories = transactions.map(transaction => transaction.categoryId).filter((category, index, self) =>
+        category && index === self.findIndex(c => c._id === category._id)
+    )
+
+    const filteredTransactions =
+        selectedCategory === "all" ? transactions
+            : transactions.filter(transaction => transaction.categoryId?._id === selectedCategory)
 
     return (
         <div>
