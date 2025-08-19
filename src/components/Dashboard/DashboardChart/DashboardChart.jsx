@@ -11,20 +11,25 @@ const DashboardChart = () => {
 
     if (!allTransactions.error) {
 
-      const dailyTotals = {}
+      const aggregated = []
 
       allTransactions.forEach((transaction) => {
-      
+
         const date = new Date(transaction.date).toLocaleDateString()
+        const existing = aggregated.find((item) => item.date === date)
 
-        if (!dailyTotals[date]) {
-          dailyTotals[date] = { income: 0, expense: 0 }
-        }
-
-        if (transaction.transactionType === "income") {
-          dailyTotals[date].income += transaction.amount
+        if (existing) {
+          if (transaction.transactionType === "income") {
+            existing.income += transaction.amount
+          } else {
+            existing.expense += transaction.amount
+          }
         } else {
-          dailyTotals[date].expense += transaction.amount
+          aggregated.push({
+            date,
+            income: transaction.transactionType === "income" ? transaction.amount : 0,
+            expense: transaction.transactionType === "expense" ? transaction.amount : 0
+          })
         }
       })
     }
