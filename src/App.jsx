@@ -12,7 +12,7 @@ import ExpensesList from './components/ExpensesList/ExpensesList'
 import AddExpense from './components/AddExpense/AddExpense'
 import IncomesList from './components/IncomesList/IncomesList'
 import AddIncome from './components/AddIncome/AddIncome'
-import Category from './components/Category/Category'
+
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -77,12 +77,6 @@ const App = () => {
             <ProtectedRoute>
               <NavBar />
               <AddExpense />
-            </ProtectedRoute>
-          } />
-          <Route path="/categories" element={
-            <ProtectedRoute>
-              <NavBar />
-              <Category />
             </ProtectedRoute>
           } />
         </Routes>
