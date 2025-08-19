@@ -14,13 +14,24 @@ const RecentTransactions = () => {
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getTransactionsSorted()
-  },[])
+  }, [])
 
   return (
-    <div>
-
+    <div className="recent-transactions-card">
+      <h3>Recent Transactions</h3>
+      <ul>
+        {transactions.map((transaction) => (
+          <li key={transaction._id} className={transaction.transactionType}>
+            <span className="emoji">{transaction.categoryId.emoji}</span>
+            <span className="name">{transaction.name}</span>
+            <span className="amount">
+              {transaction.transactionType === "expense" ? "-" : "+"}${transaction.amount.toFixed(2)}
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
