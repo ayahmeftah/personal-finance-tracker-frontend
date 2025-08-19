@@ -8,6 +8,7 @@ import SignUp from './components/SignUpForm/SignUpForm'
 import Dashboard from './components/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import NavBar from './components/NavBar/NavBar'
+// import Profile from './components/Profile/Profile'
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -49,6 +50,7 @@ const App = () => {
               <Dashboard />
             </ProtectedRoute>
           } />
+          {/* <Route path='/profile' element={<Profile/>}/> */}
         </Routes>
       </div>
     </Router>
