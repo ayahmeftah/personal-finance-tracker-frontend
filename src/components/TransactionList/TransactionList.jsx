@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import transactionsCalls from '../../../lib/transaction-api'
+import EditTransactionButton from './EditTransactionButton'
 
 
 const TransactionList = ({ transactionType }) => {
@@ -52,6 +53,12 @@ const TransactionList = ({ transactionType }) => {
                                 }}
                             >
                                 {transaction.transactionType === "income" ? "+" : "-"}${transaction.amount}
+                            </div>
+                            <div style={{ display: "flex", gap: "5px" }}>
+                                <EditTransactionButton
+                                    transactionToEdit={transaction}
+                                    transactionType={transactionType}
+                                />
                             </div>
                         </li>
                     ))}
