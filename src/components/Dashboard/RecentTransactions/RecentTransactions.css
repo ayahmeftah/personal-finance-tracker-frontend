@@ -9,7 +9,7 @@
 .recent-transactions-card h3 {
   margin-bottom: 15px;
   font-size: 18px;
-  color: #555555;
+    font-weight: 500;
 }
 
 .recent-transactions-card ul {
@@ -61,4 +61,12 @@
 
 .amount.expense {
   background-color: #f44336;
+}
+
+.emoji {
+  font-size: 25px;
+  border-radius: 50%;
+  padding: 10px;
+  background-color: #f6ecec;
+  margin-right: 10px;
 }
