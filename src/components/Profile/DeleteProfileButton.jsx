@@ -1,7 +1,13 @@
-const DeleteProfileButton = () => {
+import userCalls from "../../../lib/user-api"
+
+const DeleteProfileButton = ({userId}) => {
+    const handleDeleteProfileClick = async () => {
+        await userCalls.deleteUser(userId)
+    }
+    
     return (
         <>
-            <button onClick={() => handleDeleteProfileClick()}>Delete Profile</button>
+            <button onClick={() => {handleDeleteProfileClick}}>Delete Profile</button>
         </>
     )
 }
