@@ -8,6 +8,10 @@ import SignUp from './components/SignUpForm/SignUpForm'
 import Dashboard from './components/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import NavBar from './components/NavBar/NavBar'
+import ExpensesList from './components/ExpensesList/ExpensesList'
+import AddExpense from './components/AddExpense/AddExpense'
+import IncomesList from './components/IncomesList/IncomesList'
+import AddIncome from './components/AddIncome/AddIncome'
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -45,8 +49,33 @@ const App = () => {
           <Route path="/signup" element={<SignUp onSignUp={handleLogin} />} />
           <Route path="/" element={
             <ProtectedRoute>
-              <NavBar/>
+              <NavBar />
               <Dashboard />
+            </ProtectedRoute>
+          } />
+          <Route path="/incomes" element={
+            <ProtectedRoute>
+              <NavBar />
+              <IncomesList />
+            </ProtectedRoute>
+          } />
+          <Route path="/incomes/add" element={
+            <ProtectedRoute>
+              <NavBar />
+              <AddIncome />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/expenses" element={
+            <ProtectedRoute>
+              <NavBar />
+              <ExpensesList />
+            </ProtectedRoute>
+          } />
+          <Route path="/expenses/add" element={
+            <ProtectedRoute>
+              <NavBar />
+              <AddExpense />
             </ProtectedRoute>
           } />
         </Routes>

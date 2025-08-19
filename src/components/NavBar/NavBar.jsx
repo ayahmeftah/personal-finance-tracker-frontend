@@ -49,12 +49,12 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/transactions/incomes" activeclassname="active">
+          <NavLink to="/incomes" activeclassname="active">
             <PaidOutlinedIcon /> Incomes
           </NavLink>
         </li>
         <li>
-          <NavLink to="/transactions/expenses" activeclassname="active">
+          <NavLink to="/expenses" activeclassname="active">
             <AccountBalanceOutlinedIcon /> Expenses
           </NavLink>
         </li>
