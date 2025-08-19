@@ -7,8 +7,6 @@ import DeleteProfileButton from './DeleteProfileButton'
 const Profile = (props) => {
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
-    const [editUser, setEditUser] = useState(null)
-    // const [formIsShown, setFormIsShown] = useState(false)
 
     useEffect(() => {
         const getUser = async () => {
@@ -23,13 +21,11 @@ const Profile = (props) => {
 
     },[])
 
-    if (!user) {
-        return <p>Loading ...</p>
-    }
+    // if (!user) {
+    //     return <p>Loading ...</p>
+    // }
 
     const handleEditClick = (userId) => {
-        // setEditUser(user)
-        // setFormIsShown(true)
         navigate(`/profile/edit`)
     }
 
@@ -40,10 +36,20 @@ const Profile = (props) => {
     return (
         <>
             <h1>welcome, {user.username}</h1>
-            <img src={user.profilePic} alt={user.profilePicPublicId}></img>
+            {/* <img src={user.profilePic} alt={user.profilePicPublicId}></img>
+            <h2>{user.name}</h2>
+            <EditProfileButton userId={user._id} handleEditClick={handleEditClick}/>
+            <DeleteProfileButton userId={user._id} handleDelete={handleDelete}/> */}
+            {
+                user.profilePic
+                ?
+                (
+                <img src={user.profilePic} alt={userCalls.profilePicPublicId}/>
+            ) : null }
             <h2>{user.name}</h2>
             <EditProfileButton userId={user._id} handleEditClick={handleEditClick}/>
             <DeleteProfileButton userId={user._id} handleDelete={handleDelete}/>
+            
         </>
     )
 }

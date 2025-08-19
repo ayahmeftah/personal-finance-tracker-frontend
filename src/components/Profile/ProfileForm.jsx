@@ -43,9 +43,9 @@ const ProfileForm = ({userId}) => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <input name='name' value={formData.name} onChange={handleChange}></input>
-                <input name='username' value={formData.username} onChange={handleChange}></input>
-                <input name='profilePic' value={formData.profilePic} onChange={handleChange}></input>
+                <input name='name' value={formData.name} onChange={handleChange} placeholder='name'></input>
+                <input name='username' value={formData.username} onChange={handleChange} placeholder='username'></input>
+                <input name='profilePic' value={formData.profilePic} onChange={handleChange} placeholder='Profile Picture' accept="image/*"></input>
                 <button>Save</button>
             </form>
         </>
