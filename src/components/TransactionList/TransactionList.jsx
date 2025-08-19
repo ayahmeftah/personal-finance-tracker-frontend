@@ -45,11 +45,11 @@ const TransactionList = ({ transactionType }) => {
                     </select>
                 </div>
             )}
-            {transactions.length === 0 ? (
+            {filteredTransactions.length === 0 ? (
                 <p>No {transactionType}s yet</p>
             ) : (
                 <ul style={{ listStyle: "none", padding: 0 }}>
-                    {transactions.map((transaction) => (
+                    {filteredTransactions.map((transaction) => (
                         <li
                             key={transaction._id}
                             style={{
