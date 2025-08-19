@@ -9,7 +9,6 @@ const AddExpense = () => {
 
     return (
         <div className='main-content'>
-            <h1>Add Expense</h1>
             <TransactionForm
                 transactionType="expense"
                 navigateTo={() => navigate("/expenses")}

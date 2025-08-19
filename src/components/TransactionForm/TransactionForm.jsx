@@ -62,6 +62,7 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
 
     return (
         <div className='main-content'>
+            <h1>{editingTransaction ? "Update" : "Add"} {transactionType}</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     name="name"
