@@ -8,7 +8,7 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
     const location = useLocation()
     const navigate = useNavigate()
 
-    const editingTransaction = location.state.transaction
+    const editingTransaction = location.state?.transaction
 
     const [formData, setFormData] = useState({
         name: "",

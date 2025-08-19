@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import transactionsCalls from '../../../lib/transaction-api'
 import EditTransactionButton from './EditTransactionButton'
+import DeleteTransactionButton from './DeleteTransactionButton'
 
 
 const TransactionList = ({ transactionType }) => {
@@ -58,6 +59,10 @@ const TransactionList = ({ transactionType }) => {
                                 <EditTransactionButton
                                     transactionToEdit={transaction}
                                     transactionType={transactionType}
+                                />
+                                <DeleteTransactionButton
+                                    transactionID={transaction._id}
+                                    getTransactionsByType={getTransactionsByType}
                                 />
                             </div>
                         </li>
