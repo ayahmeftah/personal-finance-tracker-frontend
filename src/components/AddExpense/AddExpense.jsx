@@ -8,7 +8,7 @@ const AddExpense = () => {
     const navigate = useNavigate()
 
     return (
-        <div>
+        <div className='main-content'>
             <h1>Add Expense</h1>
             <TransactionForm
                 transactionType="expense"

@@ -8,7 +8,7 @@ const AddIncome = () => {
     const navigate = useNavigate()
 
     return (
-        <div>
+        <div className='main-content'>
             <h1>Add Income</h1>
             <TransactionForm
                 transactionType="income"
