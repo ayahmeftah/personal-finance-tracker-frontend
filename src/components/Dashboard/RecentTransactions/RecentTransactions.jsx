@@ -26,14 +26,14 @@ const RecentTransactions = () => {
         {transactions.map((transaction) => (
           <li key={transaction._id} className={transaction.transactionType}>
             <div className="transaction-info">
-              <span className="emoji">{t.categoryId.emoji}</span>
+              <span className="emoji">{transaction.categoryId.emoji}</span>
               <div>
-                <span className="name">{t.name}</span>
-                <span className="date">{new Date(t.date).toLocaleDateString()}</span>
+                <span className="name">{transaction.name}</span>
+                <span className="date">{new Date(transaction.date).toLocaleDateString()}</span>
               </div>
             </div>
-            <span className={`amount ${t.transactionType}`}>
-              {t.transactionType === "expense" ? "-" : "+"}${t.amount.toFixed(2)}
+            <span className={`amount ${transaction.transactionType}`}>
+              {transaction.transactionType === "expense" ? "-" : "+"}${transaction.amount.toFixed(2)}
             </span>
           </li>
         ))}
