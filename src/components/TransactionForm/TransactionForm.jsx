@@ -3,7 +3,7 @@ import transactionsCalls from "../../../lib/transaction-api"
 import categoriesCalls from "../../../lib/category-api"
 import { useState, useEffect } from 'react'
 
-const TransactionForm = ({ transactionType , navigateTo }) => {
+const TransactionForm = ({ transactionType, navigateTo }) => {
 
     const [formData, setFormData] = useState({
         name: "",
@@ -15,8 +15,8 @@ const TransactionForm = ({ transactionType , navigateTo }) => {
 
     const [categories, setCategories] = useState([])
     const getCategories = async () => {
-        const res = await categoriesCalls.getAllCategories(transactionType)
-        setCategories(res)
+        const res = await categoriesCalls.getAllCategories() || []
+        setCategories(res.filter(category => !res.error && category.type === transactionType))
     }
 
     useEffect(() => {
@@ -32,14 +32,14 @@ const TransactionForm = ({ transactionType , navigateTo }) => {
         const res = await transactionsCalls.createTransaction(formData)
 
         if (!res.error) {
-            setFormData({ 
-                name: "", 
-                amount: "", 
-                categoryId: "", 
-                date: "", 
-                transactionType 
+            setFormData({
+                name: "",
+                amount: "",
+                categoryId: "",
+                date: "",
+                transactionType
             })
-            
+
             if (navigateTo) navigateTo()
         }
     }
@@ -80,7 +80,7 @@ const TransactionForm = ({ transactionType , navigateTo }) => {
                             <option key={category._id} value={category._id}>{category.name}</option>
                         ))}
                     </select>
-                    
+
                 </div>
 
                 <button type="submit">Add {transactionType}</button>
