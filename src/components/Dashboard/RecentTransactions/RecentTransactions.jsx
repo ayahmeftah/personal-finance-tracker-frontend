@@ -1,6 +1,7 @@
 import React from 'react'
 import transactionsCalls from '../../../../lib/transaction-api'
 import { useState, useEffect } from 'react'
+import './RecentTransactions.css'
 
 const RecentTransactions = () => {
 
@@ -24,10 +25,15 @@ const RecentTransactions = () => {
       <ul>
         {transactions.map((transaction) => (
           <li key={transaction._id} className={transaction.transactionType}>
-            <span className="emoji">{transaction.categoryId.emoji}</span>
-            <span className="name">{transaction.name}</span>
-            <span className="amount">
-              {transaction.transactionType === "expense" ? "-" : "+"}${transaction.amount.toFixed(2)}
+            <div className="transaction-info">
+              <span className="emoji">{t.categoryId.emoji}</span>
+              <div>
+                <span className="name">{t.name}</span>
+                <span className="date">{new Date(t.date).toLocaleDateString()}</span>
+              </div>
+            </div>
+            <span className={`amount ${t.transactionType}`}>
+              {t.transactionType === "expense" ? "-" : "+"}${t.amount.toFixed(2)}
             </span>
           </li>
         ))}
