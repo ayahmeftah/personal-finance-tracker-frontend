@@ -1,13 +1,11 @@
 import userCalls from "../../../lib/user-api"
+// import {useNavigate} from 'react-router'
 
-const DeleteProfileButton = ({userId}) => {
+const DeleteProfileButton = ({userId, handleDelete}) => {
     const handleDeleteProfileClick = async () => {
         try {
-            const confirm = window.prompt('Are you sure you want to delete your account? ')
-            if (confirm === 'yes') {
-                await userCalls.deleteUser(userId)
-                alert('account deleted succesfully')
-            }
+            await userCalls.deleteUser(userId)
+            handleDelete()            
         } catch (error) {
             console.log({error: error.message})
         }

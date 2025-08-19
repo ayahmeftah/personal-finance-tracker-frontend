@@ -8,7 +8,9 @@ import SignUp from './components/SignUpForm/SignUpForm'
 import Dashboard from './components/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import NavBar from './components/NavBar/NavBar'
-// import Profile from './components/Profile/Profile'
+import Profile from './components/Profile/Profile'
+import EditProfileButton from './components/Profile/EditProfileButton'
+import ProfileForm from './components/Profile/ProfileForm'
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -50,8 +52,26 @@ const App = () => {
               <Dashboard />
             </ProtectedRoute>
           } />
+           <Route path="/profile" element={
+            <ProtectedRoute>
+              {/* <NavBar/> */}
+              <Profile />
+            </ProtectedRoute>
+
+
+          } />
+
+            <Route path="/profile/edit" element={
+            <ProtectedRoute>
+              {/* <NavBar/> */}
+              <ProfileForm />
+            </ProtectedRoute>
+
+            
+          } />
           {/* <Route path='/profile' element={<Profile/>}/> */}
         </Routes>
+          {/* <Profile/> */}
       </div>
     </Router>
   )
