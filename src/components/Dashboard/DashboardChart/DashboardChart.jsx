@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import transactionsCalls from '../../../../lib/transaction-api'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import { useState } from 'react'
@@ -32,7 +32,14 @@ const DashboardChart = () => {
           })
         }
       })
+
+      aggregated.sort((a, b) => new Date(a.date) - new Date(b.date))
+      setChartData(aggregated)
     }
+
+    useEffect(()=>{
+      getChartData()
+    },[])
 
     return (
       <div>
