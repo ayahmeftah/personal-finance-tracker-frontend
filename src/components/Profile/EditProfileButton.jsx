@@ -2,12 +2,17 @@ import userCalls from "../../../lib/user-api"
 
 const EditProfileButton = ({userId}) => {
     const handleEditProfileClick = async () => {
-        await userCalls.updateUser(userId)
+        try {
+            await userCalls.updateUser(userId)
+            alert('Profile is updated')
+        } catch (error) {
+            console.log({error: error.message})
+        }
     }
     
     return (
         <>
-            <button onClick={() => {handleEditProfileClick}}>Update Profile</button>
+            <button onClick={handleEditProfileClick}>Update Profile</button>
         </>
     )
 }
