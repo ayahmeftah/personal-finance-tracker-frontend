@@ -9,17 +9,14 @@ const CategoryList = ({setEditCategory}) => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const fetchCategories = async () => {
-            const data = await categoryCalls.getAllCategories()
-            setCategories(Array.isArray(data) ? data : [])
-            setLoading(false)
-        }
+        
         fetchCategories()
     }, [])
 
     return (
         <>
             <h1>Categories</h1>
+            <button>+ Add Category</button>
             {
                 loading ? (
                     <BeatLoader/>
