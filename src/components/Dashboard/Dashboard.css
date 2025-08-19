@@ -1,0 +1,9 @@
+.dashboard-lower {
+  display: flex;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.dashboard-lower div {
+  flex: 1;
+}

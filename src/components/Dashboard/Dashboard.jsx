@@ -2,6 +2,7 @@ import React from 'react'
 import TotalCards from './TotalCards/TotalsCards'
 import RecentTransactions from './RecentTransactions/RecentTransactions'
 import DashboardChart from './DashboardChart/DashboardChart'
+import './Dashboard.css'
 
 const Dashboard = () => {
   
@@ -9,7 +10,11 @@ const Dashboard = () => {
     <div className="main-content">
       <h1>Dashboard</h1>
       <TotalCards />
-      <RecentTransactions />
+      
+      <div className="dashboard-lower">
+        <RecentTransactions />
+        <DashboardChart />
+      </div>
     </div>
   )
 }
