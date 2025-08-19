@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router'
 import EditProfileButton from './EditProfileButton'
 import DeleteProfileButton from './DeleteProfileButton'
 
-const Profile = (props) => {
+const Profile = () => {
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
 
@@ -21,16 +21,16 @@ const Profile = (props) => {
 
     },[])
 
-    // if (!user) {
-    //     return <p>Loading ...</p>
-    // }
+    if (!user) {
+        return <p>Loading ...</p>
+    }
 
-    const handleEditClick = (userId) => {
+    const handleEditClick = () => {
         navigate(`/profile/edit`)
     }
 
     const handleDelete = () => {
-        navigate('/')
+        navigate('/signup')
     }
 
     return (
@@ -49,7 +49,6 @@ const Profile = (props) => {
             <h2>{user.name}</h2>
             <EditProfileButton userId={user._id} handleEditClick={handleEditClick}/>
             <DeleteProfileButton userId={user._id} handleDelete={handleDelete}/>
-            
         </>
     )
 }

@@ -4,6 +4,8 @@ import userCalls from '../../../lib/user-api'
 
 const ProfileForm = ({userId}) => {
     const navigate = useNavigate()
+    const [currentUser, setCurrentUser] = useState(null)
+    const [selectedFile, setSelectedFile] = useState(null)
     const [formData, setFormData] = useState({
         name: '',
         username: '',
@@ -13,11 +15,12 @@ const ProfileForm = ({userId}) => {
     useEffect(() => {
         const data = async () => {
             try {
-                const data = await userCalls.getUser(userId)
+                const data = await userCalls.getUser()
+                setCurrentUser(data)
                 setFormData({
-                    name: data.name,
-                    username: data.username,
-                    profilePic: data.profilePic
+                    name: data.name || '',
+                    username: data.username || '',
+                    profilePic: data.profilePic || ''
                 })
             } catch (error) {
                 console.log({error: error.message})
@@ -30,10 +33,14 @@ const ProfileForm = ({userId}) => {
         setFormData({...formData, [event.target.name] : event.target.value})
     }
 
+    const handlePictureChange = (event) => {
+        setSelectedFile(event.target.files[0])
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            await userCalls.updateUser(userId, formData)
+            await userCalls.updateUser(formData)
             navigate('/profile')
         } catch (error) {
             console.log({error: error.message})
@@ -42,10 +49,12 @@ const ProfileForm = ({userId}) => {
 
     return (
         <>
+
+            <h2>Update User Profile</h2>
             <form onSubmit={handleSubmit}>
                 <input name='name' value={formData.name} onChange={handleChange} placeholder='name'></input>
                 <input name='username' value={formData.username} onChange={handleChange} placeholder='username'></input>
-                <input name='profilePic' value={formData.profilePic} onChange={handleChange} placeholder='Profile Picture' accept="image/*"></input>
+                <input name='profilePic' onChange={handlePictureChange} placeholder='Profile Picture' accept="image/*" type='file'></input>
                 <button>Save</button>
             </form>
         </>
