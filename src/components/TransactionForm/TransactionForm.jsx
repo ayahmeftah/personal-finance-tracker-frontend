@@ -23,6 +23,26 @@ const TransactionForm = ({ transactionType }) => {
         getCategories()
     }, [transactionType])
 
+    const handleChange = (event) => {
+        setFormData({ ...formData, [event.target.name]: event.target.value })
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        const res = await transactionsCalls.createTransaction(formData)
+
+        if (!res.error) {
+            setFormData({ 
+                name: "", 
+                amount: "", 
+                categoryId: "", 
+                date: "", 
+                transactionType 
+            })
+            
+        }
+    }
+
     return (
         <div className='main-content'>
             <form onSubmit={handleSubmit}>
