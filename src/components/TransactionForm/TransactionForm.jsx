@@ -41,25 +41,23 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
         }
     }
 
+    useEffect(()=>{
+        editPopulate()
+    },[editingTransaction])
+
     const handleChange = (event) => {
         setFormData({ ...formData, [event.target.name]: event.target.value })
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        const res = await transactionsCalls.createTransaction(formData)
-
-        if (!res.error) {
-            setFormData({
-                name: "",
-                amount: "",
-                categoryId: "",
-                date: "",
-                transactionType
-            })
-
-            if (navigateTo) navigateTo()
+        if (editingTransaction) {
+            await transactionsCalls.editTransaction(editingTransaction._id, formData)
+        } else {
+            await transactionsCalls.createTransaction(formData)
         }
+
+        navigateTo ? navigateTo() : navigate(`/${transactionType}s`)
     }
 
     return (
@@ -101,7 +99,7 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
 
                 </div>
 
-                <button type="submit">Add {transactionType}</button>
+                <button type="submit">{editingTransaction ? "Update" : "Add"} {transactionType}</button>
             </form>
         </div>
     )
