@@ -1,6 +1,7 @@
 import React from 'react'
 import transactionsCalls from "../../../lib/transaction-api"
 import categoriesCalls from "../../../lib/category-api"
+import { useState, useEffect } from 'react'
 
 const TransactionForm = ({ transactionType }) => {
 
@@ -11,6 +12,16 @@ const TransactionForm = ({ transactionType }) => {
         date: "",
         transactionType: transactionType,
     })
+
+    const [categories, setCategories] = useState([])
+    const getCategories = async () => {
+        const res = await categoriesCalls.getAllCategories(transactionType)
+        setCategories(res)
+    }
+
+    useEffect(() => {
+        getCategories()
+    }, [transactionType])
 
     return (
         <div className='main-content'>
@@ -48,7 +59,7 @@ const TransactionForm = ({ transactionType }) => {
                             <option key={category._id} value={category._id}>{category.name}</option>
                         ))}
                     </select>
-
+                    
                 </div>
 
                 <Button type="submit">Add {transactionType}</Button>
