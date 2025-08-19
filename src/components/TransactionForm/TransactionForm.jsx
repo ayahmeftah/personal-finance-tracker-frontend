@@ -34,16 +34,16 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
             setFormData({
                 name: editingTransaction.name,
                 amount: editingTransaction.amount,
-                categoryId: editingTransaction.categoryId,
+                categoryId: editingTransaction.categoryId._id || editingTransaction.categoryId,
                 date: editingTransaction.date.split("T")[0],
                 transactionType: editingTransaction.transactionType
             })
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         editPopulate()
-    },[editingTransaction])
+    }, [editingTransaction])
 
     const handleChange = (event) => {
         setFormData({ ...formData, [event.target.name]: event.target.value })
