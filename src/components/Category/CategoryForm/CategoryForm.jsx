@@ -1,24 +1,35 @@
 import categoryCalls from '../../../../lib/category-api'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
+import EmojiPicker from 'emoji-picker-react'
 
 const CategoryForm = (props) => {
- 
+
     const [formData, setFormData] = useState({
         name: '',
-        type: ''
+        type: '',
+        emoji: ''
     })
 
     useEffect(() => {
         if (props.editCategory) {
             setFormData({
                 name: props.editCategory.name || '',
-                type: props.editCategory.type || ''
+                type: props.editCategory.type || '',
+                emoji: props.editCategory.emoji || ''
             })
         }
     }, [props.editCategory])
 
     const [isSubmitting, setIsSubmitting] = useState(false)
+
+    const [showEmojiPicker, setShowEmojiPicker] = useState(false)
+
+    const handleEmojiClick = (emojiData) => {
+        setFormData({ ...formData, emoji: emojiData.emoji })
+        setShowEmojiPicker(false)
+    }
+
 
     const handleFormChange = (event) => {
         event.preventDefault()
@@ -41,7 +52,8 @@ const CategoryForm = (props) => {
         if (response.status === 201 || response.status === 200) {
             setFormData({
                 name: '',
-                type: ''
+                type: '',
+                emoji: ''
             })
         }
         props.fetchCategories()
@@ -73,8 +85,17 @@ const CategoryForm = (props) => {
                     <option value='income'>Income</option>
                     <option value='expense'>Expense</option>
                 </select>
+                <label>Category Emoji: </label>
+                <div>
+                    <button type="button" onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
+                        {formData.emoji || 'Pick Emoji'}
+                    </button>
+                </div>
+                {showEmojiPicker && (
+                    <EmojiPicker onEmojiClick={handleEmojiClick} />
+                )}
                 <button type='submit'>{props.editCategory && props.editCategory._id ? 'Update' : 'Add'}</button>
-                <button onClick={()=> props.setFormIsShown(false)}>Cancel</button>
+                <button onClick={() => props.setFormIsShown(false)}>Cancel</button>
             </form>
         </>
     )
