@@ -8,13 +8,10 @@ import SignUp from './components/SignUpForm/SignUpForm'
 import Dashboard from './components/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import NavBar from './components/NavBar/NavBar'
-// import ExpensesList from './components/ExpensesList/ExpensesList'
-// import AddExpense from './components/AddExpense/AddExpense'
-// import IncomesList from './components/IncomesList/IncomesList'
-// import AddIncome from './components/AddIncome/AddIncome'
-import CategoryForm from './components/Category/CategoryForm/CategoryForm'
-import CategoryList from './components/Category/CategoryList/CategoryList'
-import EditCategoryButton from './components/Category/EditCategoryButton/EditCategoryButton'
+import ExpensesList from './components/ExpensesList/ExpensesList'
+import AddExpense from './components/AddExpense/AddExpense'
+import IncomesList from './components/IncomesList/IncomesList'
+import AddIncome from './components/AddIncome/AddIncome'
 import Category from './components/Category/Category'
 
 const App = () => {
@@ -43,7 +40,6 @@ const App = () => {
     }
   }
 
-  // const [editCategory, setEditCategory] = useState(null)
 
   return (
     <Router>
@@ -58,7 +54,7 @@ const App = () => {
               <Dashboard />
             </ProtectedRoute>
           } />
-          {/* <Route path="/incomes" element={
+          <Route path="/incomes" element={
             <ProtectedRoute>
               <NavBar />
               <IncomesList />
@@ -82,19 +78,13 @@ const App = () => {
               <NavBar />
               <AddExpense />
             </ProtectedRoute>
-          } /> */}
+          } />
           <Route path="/categories" element={
             <ProtectedRoute>
               <NavBar />
               <Category />
             </ProtectedRoute>
           } />
-          {/* <Route path="/categories/form" element={
-            <ProtectedRoute>
-              <NavBar />
-              <CategoryForm editCategory={editCategory} />
-            </ProtectedRoute>
-          } /> */}
         </Routes>
       </div>
     </Router>
