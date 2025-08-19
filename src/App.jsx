@@ -11,6 +11,8 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import CategoryForm from './components/Category/CategoryForm/CategoryForm'
 import CategoryList from './components/Category/CategoryList/CategoryList'
 import EditCategoryButton from './components/Category/EditCategoryButton/EditCategoryButton'
+// import {useNavigate} from 'react-router'
+
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -38,12 +40,11 @@ const App = () => {
       setToken(null)
     }
   }
-
+  
   const [editCategory, setEditCategory] = useState(null)
 
-  const handleEditClick = (category) => {
-      setEditCategory(category)
-  }
+  
+  
 
   return (
     <Router>
@@ -52,11 +53,19 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignUp onSignUp={handleLogin} />} />
-          <Route path="/" element={
+          <Route path="/category" element={
             <ProtectedRoute>
-              {/* <CategoryForm editCategory={editCategory}/> */}
+              {/* <CategoryForm editCategory={editCategory} /> */}
               {/* <Dashboard /> */}
-              <CategoryList handleEditClick={handleEditClick}/>
+              <CategoryList setEditCategory={setEditCategory}/>
+              {/* <EditCategoryButton /> */}
+            </ProtectedRoute>
+          } />
+          <Route path="/category/add" element={
+            <ProtectedRoute>
+              <CategoryForm editCategory={editCategory} />
+              {/* <Dashboard /> */}
+              {/* <CategoryList handleEditClick={handleEditClick}/> */}
               {/* <EditCategoryButton /> */}
             </ProtectedRoute>
           } />

@@ -3,7 +3,7 @@ import categoryCalls from '../../../../lib/category-api'
 import { BeatLoader } from 'react-spinners'
 import {useEffect, useState} from 'react'
 
-const CategoryList = ({handleEditClick}) => {
+const CategoryList = ({setEditCategory}) => {
     const [categories, setCategories] = useState([])
     const [loading, setLoading] = useState(true)
 
@@ -31,7 +31,7 @@ const CategoryList = ({handleEditClick}) => {
                             <p>{category.name}</p>
                             <p>{category.type}</p>
                             <div>
-                                <EditCategoryButton categoryId={category._id} handleEditClick={handleEditClick}/>
+                                <EditCategoryButton categoryId={category._id} setEditCategory={setEditCategory}/>
                             </div>
                         </li>
                     ))

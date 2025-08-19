@@ -67,8 +67,15 @@
 
 // export default EditCategoryButton
 
+import { useNavigate } from "react-router"
+const EditCategoryButton = ({setEditCategory, categoryId}) => {
 
-const EditCategoryButton = ({handleEditClick, categoryId}) => {
+    const navigate = useNavigate()
+    const handleEditClick = (category) => {
+      setEditCategory(category)
+        navigate('/category/add')
+  }
+
     return (
         <>
             <button onClick={() => handleEditClick(categoryId)}>Edit</button>

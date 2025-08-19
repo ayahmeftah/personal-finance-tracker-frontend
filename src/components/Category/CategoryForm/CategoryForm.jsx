@@ -1,8 +1,9 @@
 import categoryCalls from '../../../../lib/category-api'
 import {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router'
 
 const CategoryForm = ({editCategory}) => {
-
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         name: '',
         type: ''
@@ -39,6 +40,7 @@ const CategoryForm = ({editCategory}) => {
         } catch (error) {
             console.log(error)
         }
+        if (navigateTo) navigateTo()
     } 
 
     useEffect(() => {
@@ -74,7 +76,7 @@ const CategoryForm = ({editCategory}) => {
                 <option value='income'>Income</option>
                 <option value='expense'>Expense</option>
             </select>
-            <button type='submit'>{editCategory && editCategory._id ? 'Update' : 'Add'}</button>
+            <button type='submit' onClick={() => navigate('/category')}>{editCategory && editCategory._id ? 'Update' : 'Add'}</button>
         </form>
        </> 
     ) 
