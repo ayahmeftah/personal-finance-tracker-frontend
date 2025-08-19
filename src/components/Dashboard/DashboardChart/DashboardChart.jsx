@@ -8,14 +8,32 @@ const DashboardChart = () => {
 
   const getChartData = async () => {
     const allTransactions = await transactionsCalls.getAllTransactions()
-    
-  }
 
-  return (
-    <div>
+    if (!allTransactions.error) {
+
+      const dailyTotals = {}
+
+      allTransactions.forEach((transaction) => {
       
-    </div>
-  )
-}
+        const date = new Date(transaction.date).toLocaleDateString()
 
+        if (!dailyTotals[date]) {
+          dailyTotals[date] = { income: 0, expense: 0 }
+        }
+
+        if (transaction.transactionType === "income") {
+          dailyTotals[date].income += transaction.amount
+        } else {
+          dailyTotals[date].expense += transaction.amount
+        }
+      })
+    }
+
+    return (
+      <div>
+
+      </div>
+    )
+  }
+}
 export default DashboardChart
