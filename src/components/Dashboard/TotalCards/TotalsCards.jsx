@@ -1,5 +1,6 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import transactionsCalls from '../../../../lib/transaction-api'
 
 const TotalsCards = () => {
 
@@ -15,7 +16,7 @@ const TotalsCards = () => {
       let income = 0
       let expenses = 0
 
-      data.forEach((transaction) => {
+      allTransactions.forEach((transaction) => {
         if (transaction.transactionType === "income") {
           income += transaction.amount
         } else if (transaction.transactionType === "expense") {
@@ -31,9 +32,24 @@ const TotalsCards = () => {
     }
   }
 
-  return (
-    <div>
+  useEffect(()=>{
+    getTotals()
+  },[])
 
+  return (
+    <div className="total-cards">
+      <div className="card balance-card">
+        <h3>Total Balance</h3>
+        <p>${totals.balance.toFixed(2)}</p>
+      </div>
+      <div className="card income-card">
+        <h3>Total Income</h3>
+        <p>${totals.income.toFixed(2)}</p>
+      </div>
+      <div className="card expenses-card">
+        <h3>Total Expenses</h3>
+        <p>${totals.expenses.toFixed(2)}</p>
+      </div>
     </div>
   )
 }
