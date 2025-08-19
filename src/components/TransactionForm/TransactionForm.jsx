@@ -2,8 +2,13 @@ import React from 'react'
 import transactionsCalls from "../../../lib/transaction-api"
 import categoriesCalls from "../../../lib/category-api"
 import { useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router'
 
 const TransactionForm = ({ transactionType, navigateTo }) => {
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    const editingTransaction = location.state.transaction
 
     const [formData, setFormData] = useState({
         name: "",
@@ -14,6 +19,7 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
     })
 
     const [categories, setCategories] = useState([])
+
     const getCategories = async () => {
         const res = await categoriesCalls.getAllCategories() || []
         setCategories(res.filter(category => !res.error && category.type === transactionType))
@@ -22,6 +28,18 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
     useEffect(() => {
         getCategories()
     }, [transactionType])
+
+    const editPopulate = () => {
+        if (editingTransaction) {
+            setFormData({
+                name: editingTransaction.name,
+                amount: editingTransaction.amount,
+                categoryId: editingTransaction.categoryId,
+                date: editingTransaction.date.split("T")[0],
+                transactionType: editingTransaction.transactionType
+            })
+        }
+    }
 
     const handleChange = (event) => {
         setFormData({ ...formData, [event.target.name]: event.target.value })
