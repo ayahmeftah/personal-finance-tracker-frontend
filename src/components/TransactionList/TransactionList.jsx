@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import transactionsCalls from '../../../lib/transaction-api'
 
 
@@ -12,6 +12,10 @@ const TransactionList = ({ transactionType }) => {
             setTransactions(res.filter(t => t.transactionType === transactionType))
         }
     }
+
+    useEffect(() => {
+        getTransactionsByType()
+    }, [transactionType])
 
     return (
         <div>
