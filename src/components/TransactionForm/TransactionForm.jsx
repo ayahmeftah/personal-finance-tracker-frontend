@@ -83,7 +83,7 @@ const TransactionForm = ({ transactionType , navigateTo }) => {
                     
                 </div>
 
-                <Button type="submit">Add {transactionType}</Button>
+                <button type="submit">Add {transactionType}</button>
             </form>
         </div>
     )

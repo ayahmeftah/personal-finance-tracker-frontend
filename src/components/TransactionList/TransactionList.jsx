@@ -22,10 +22,37 @@ const TransactionList = ({ transactionType }) => {
             {transactions.length === 0 ? (
                 <p>No {transactionType}s yet</p>
             ) : (
-                <ul>
-                    {transactions.map((tran) => (
-                        <li key={tran._id}>
-                            {tran.name} - {tran.amount} on {new Date(tran.date).toLocaleDateString()}
+                <ul style={{ listStyle: "none", padding: 0 }}>
+                    {transactions.map((transaction) => (
+                        <li
+                            key={transaction._id}
+                            style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                                padding: "10px 0",
+                                borderBottom: "1px solid #ddd"
+                            }}
+                        >
+                            <div>
+                                <div style={{ fontWeight: "bold" }}>{transaction.name}</div>
+                                <div style={{ fontSize: "0.9em", color: "#666" }}>
+                                    {new Date(transaction.date).toLocaleDateString("en-GB", {
+                                        day: "2-digit",
+                                        month: "short",
+                                        year: "numeric"
+                                    })}
+                                </div>
+                            </div>
+
+                            <div
+                                style={{
+                                    color: transaction.transactionType === "income" ? "green" : "red",
+                                    fontWeight: "bold"
+                                }}
+                            >
+                                {transaction.transactionType === "income" ? "+" : "-"}${transaction.amount}
+                            </div>
                         </li>
                     ))}
                 </ul>
