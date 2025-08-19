@@ -37,7 +37,12 @@ const TransactionList = ({ transactionType }) => {
                             }}
                         >
                             <div>
-                                <div style={{ fontWeight: "bold" }}>{transaction.name}</div>
+                                <div style={{ fontWeight: "bold" }}>
+                                    {transaction.categoryId?.emoji && (
+                                        <span style={{ marginRight: "6px" }}>{transaction.categoryId.emoji}</span>
+                                    )}
+                                    {transaction.name}
+                                </div>
                                 <div style={{ fontSize: "0.9em", color: "#666" }}>
                                     {new Date(transaction.date).toLocaleDateString("en-GB", {
                                         day: "2-digit",
