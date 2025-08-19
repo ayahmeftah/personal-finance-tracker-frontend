@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router"
 
-const EditCategoryButton = ({handleEditClick, category}) => {
+const EditCategoryButton = ({handleEditClick, category, categoryId}) => {
 
     return (
-      
         <>
             <button onClick={() => handleEditClick(category)}>Edit</button>
         </>

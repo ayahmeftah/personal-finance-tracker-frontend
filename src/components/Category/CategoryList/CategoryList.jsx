@@ -20,7 +20,7 @@ const CategoryList = (props) => {
                             <p>{category.name}</p>
                             <p>{category.type}</p>
                             <div>
-                                <EditCategoryButton categoryId={category._id} fetchCategories={props.fetchCategories} category={category} handleEditClick={props.handleEditClick}/>
+                                <EditCategoryButton categoryId={category._id} fetchCategories={props.fetchCategories} category={category} handleEditClick={props.handleEditClick} />
                                 <DeleteCategoryButton categoryId={category._id} fetchCategories={props.fetchCategories}/>
                             </div>
                         </li>

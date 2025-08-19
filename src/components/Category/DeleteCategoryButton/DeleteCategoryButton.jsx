@@ -1,14 +1,14 @@
 import categoryCalls from '../../../../lib/category-api'
 
 const DeleteCategoryButton = ({ categoryId, fetchCategories }) => {
-    const handleDeleteCategory = async () => {
-        await categoryCalls.deleteCategory(categoryId)
+    const handleDeleteCategory = async (id) => {
+        await categoryCalls.deleteCategory(id)
         fetchCategories()
     }
 
     return (
         <>
-            <button onClick={handleDeleteCategory}>Delete</button>
+            <button onClick={()=> handleDeleteCategory(categoryId)}>Delete</button>
         </>
     )
 }

@@ -12,7 +12,7 @@ const Category = () => {
 
     const [editCategory, setEditCategory] = useState(null)
 
-    const handleAddClick = (event) => {
+    const handleAddClick = () => {
         setFormIsShown(true)
         setEditCategory(null)
     }
@@ -24,7 +24,11 @@ const Category = () => {
 
     const fetchCategories = async () => {
         const data = await categoryCalls.getAllCategories()
-        setCategories(Array.isArray(data) ? data : [])
+        if (!data || !Array.isArray(data)) {
+            setCategories([])
+        } else {
+            setCategories(data)
+        }
         setLoading(false)
     }
 
@@ -34,7 +38,7 @@ const Category = () => {
     }, [])
 
     return (
-        <div>
+        <div className='main-content'>
             <h1>Categories</h1>
             <button onClick={handleAddClick}>Add New Category</button>
             {
@@ -44,7 +48,7 @@ const Category = () => {
                     :
                     null
             }
-            <CategoryList categories={categories} fetchCategories={fetchCategories} handleEditClick={handleEditClick} />
+            <CategoryList categories={categories} fetchCategories={fetchCategories} handleEditClick={handleEditClick} setEditCategory={setEditCategory} setFormIsShown={setFormIsShown}/>
 
         </div>
     )

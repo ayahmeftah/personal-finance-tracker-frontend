@@ -3,9 +3,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 
 const CategoryForm = (props) => {
-    // const navigate = useNavigate()
-    // const location = useLocation() 
-
+ 
     const [formData, setFormData] = useState({
         name: '',
         type: ''
@@ -35,7 +33,7 @@ const CategoryForm = (props) => {
         let response
 
         if (props.editCategory && props.editCategory._id) {
-            response = await categoryCalls.updateCategory(props.editCategory._id, formData)
+            response = await categoryCalls.updateCategory(formData, props.editCategory._id)
         } else {
             response = await categoryCalls.createCategory(formData)
         }
@@ -45,9 +43,9 @@ const CategoryForm = (props) => {
                 name: '',
                 type: ''
             })
-            props.setFormIsShown(false)
-            props.fetchCategories()
         }
+        props.fetchCategories()
+        props.setFormIsShown(false)
 
         setIsSubmitting(false)
     }
@@ -71,7 +69,7 @@ const CategoryForm = (props) => {
                     value={formData.type}
                     onChange={handleFormChange}
                 >
-                    <option value='' disabled>Select type</option>
+                    <option value=''>Select type</option>
                     <option value='income'>Income</option>
                     <option value='expense'>Expense</option>
                 </select>
