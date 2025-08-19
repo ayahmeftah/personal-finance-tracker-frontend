@@ -1,6 +1,5 @@
 import categoryCalls from '../../../../lib/category-api'
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router'
 import EmojiPicker from 'emoji-picker-react'
 
 const CategoryForm = (props) => {
