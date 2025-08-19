@@ -1,7 +1,7 @@
 const DeleteProfileButton = () => {
     return (
         <>
-            <button ocClick={() => handleDeleteProfileClick()}>Delete Profile</button>
+            <button onClick={() => handleDeleteProfileClick()}>Delete Profile</button>
         </>
     )
 }
