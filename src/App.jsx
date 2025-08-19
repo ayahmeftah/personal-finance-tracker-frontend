@@ -33,7 +33,7 @@ const App = () => {
   if (token) {
     try {
       decodedToken = jwtDecode(token)
-      console.log(decodedToken)
+      // console.log(decodedToken)
     } catch (err) {
       console.error("Invalid token in localStorage:", token)
       localStorage.removeItem("token")

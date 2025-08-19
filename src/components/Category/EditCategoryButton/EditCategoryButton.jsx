@@ -73,7 +73,7 @@ const EditCategoryButton = ({setEditCategory, categoryId}) => {
     const navigate = useNavigate()
     const handleEditClick = (category) => {
       setEditCategory(category)
-        navigate('/category/add')
+        navigate('/category/add')   
   }
 
     return (

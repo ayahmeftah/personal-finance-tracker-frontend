@@ -2,6 +2,7 @@ import EditCategoryButton from "../EditCategoryButton/EditCategoryButton.jsx"
 import categoryCalls from '../../../../lib/category-api'
 import { BeatLoader } from 'react-spinners'
 import {useEffect, useState} from 'react'
+import DeleteCategoryButton from "../DeleteCategoryButton/DeleteCategoryButton.jsx"
 
 const CategoryList = ({setEditCategory}) => {
     const [categories, setCategories] = useState([])
@@ -32,6 +33,7 @@ const CategoryList = ({setEditCategory}) => {
                             <p>{category.type}</p>
                             <div>
                                 <EditCategoryButton categoryId={category._id} setEditCategory={setEditCategory}/>
+                                <DeleteCategoryButton categoryId={category._id}/>
                             </div>
                         </li>
                     ))
