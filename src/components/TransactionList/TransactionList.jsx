@@ -30,6 +30,21 @@ const TransactionList = ({ transactionType }) => {
 
     return (
         <div>
+            {transactions.length > 0 && (
+                <div style={{ marginBottom: "15px" }}>
+                    <select
+                        value={selectedCategory}
+                        onChange={(event) => setSelectedCategory(event.target.value)}
+                    >
+                        <option value="all">All Categories</option>
+                        {uniqueCategories.map((category) => (
+                            <option key={category._id} value={category._id}>
+                                {category.emoji} {category.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            )}
             {transactions.length === 0 ? (
                 <p>No {transactionType}s yet</p>
             ) : (
