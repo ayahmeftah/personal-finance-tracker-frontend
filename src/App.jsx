@@ -13,7 +13,6 @@ import AddExpense from './components/AddExpense/AddExpense'
 import IncomesList from './components/IncomesList/IncomesList'
 import AddIncome from './components/AddIncome/AddIncome'
 
-
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'))
 
@@ -33,13 +32,13 @@ const App = () => {
   if (token) {
     try {
       decodedToken = jwtDecode(token)
+      console.log(decodedToken)
     } catch (err) {
       console.error("Invalid token in localStorage:", token)
       localStorage.removeItem("token")
       setToken(null)
     }
   }
-
 
   return (
     <Router>
