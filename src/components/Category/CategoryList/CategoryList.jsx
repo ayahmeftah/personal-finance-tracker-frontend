@@ -16,7 +16,7 @@ const CategoryList = (props) => {
                             props.categories.map((category) => (
                                 <li key={category._id}>
                                     <p>
-                                        {category.emoji ? <span>{category.emoji} </span> : null}
+                                        {category.emoji ? <span>{category.emoji} </span> : '💰'}
                                         {category.name}
                                     </p>
                                     <p>{category.type}</p>
