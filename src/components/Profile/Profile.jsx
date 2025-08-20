@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import EditProfileButton from './EditProfileButton'
 import DeleteProfileButton from './DeleteProfileButton'
+import './Profile.css'
 
-const Profile = () => {
+const Profile = ({ handleLogout }) => {
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
     const [editUser, setEditUser] = useState(null)
@@ -35,16 +36,34 @@ const Profile = () => {
     }
 
     return (
-        <div className='main-content'>
-            <h1>Welcome, {user.name}</h1>
+        <div className="profile-container">
+            <h1 className="profile-name">Welcome, {user.name}</h1>
+
             <img
+                className="profile-pic"
                 src={user.profilePic || "/images/default-profile-img.jpg"}
                 alt="Profile"
             />
-            <h2>@{user.username}</h2>
-            <EditProfileButton userId={user._id} handleEditClick={handleEditClick} editUser={editUser} />
-            <DeleteProfileButton userId={user._id} handleDelete={handleDelete} />
-            <button onClick={()=>navigate("/")}>Back to Dashboard</button>
+
+            <h2 className="profile-username">@{user.username}</h2>
+
+            <div className="profile-actions">
+                <EditProfileButton
+                    userId={user._id}
+                    handleEditClick={handleEditClick}
+                    editUser={editUser}
+                />
+                <DeleteProfileButton
+                    userId={user._id}
+                    handleDelete={handleDelete}
+                />
+                <button className="btn-dashboard" onClick={() => navigate("/")}>
+                    Back to Dashboard
+                </button>
+                <button className="btn-logout" onClick={handleLogout}>
+                    Logout
+                </button>
+            </div>
         </div>
     )
 }

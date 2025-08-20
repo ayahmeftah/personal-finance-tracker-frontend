@@ -87,7 +87,7 @@ const App = () => {
           } />
           <Route path="/profile" element={
             <ProtectedRoute>
-              <Profile />
+              <Profile handleLogout={handleLogout}/>
             </ProtectedRoute>
           } />
           <Route path="/profile/edit" element={
