@@ -8,9 +8,11 @@ import SignUp from './components/SignUpForm/SignUpForm'
 import Dashboard from './components/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import NavBar from './components/NavBar/NavBar'
-import Profile from './components/Profile/Profile'
-import EditProfileButton from './components/Profile/EditProfileButton'
-import ProfileForm from './components/Profile/ProfileForm'
+import ExpensesList from './components/ExpensesList/ExpensesList'
+import AddExpense from './components/AddExpense/AddExpense'
+import IncomesList from './components/IncomesList/IncomesList'
+import AddIncome from './components/AddIncome/AddIncome'
+import Category from './components/Category/Category'
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -31,7 +33,6 @@ const App = () => {
   if (token) {
     try {
       decodedToken = jwtDecode(token)
-      console.log(decodedToken)
     } catch (err) {
       console.error("Invalid token in localStorage:", token)
       localStorage.removeItem("token")
@@ -48,30 +49,42 @@ const App = () => {
           <Route path="/signup" element={<SignUp onSignUp={handleLogin} />} />
           <Route path="/" element={
             <ProtectedRoute>
-              <NavBar/>
+              <NavBar />
               <Dashboard />
             </ProtectedRoute>
           } />
-           <Route path="/profile" element={
+          <Route path="/incomes" element={
             <ProtectedRoute>
-              {/* <NavBar/> */}
-              <Profile />
+              <NavBar />
+              <IncomesList />
             </ProtectedRoute>
-
-
+          } />
+          <Route path="/incomes/add" element={
+            <ProtectedRoute>
+              <NavBar />
+              <AddIncome />
+            </ProtectedRoute>
           } />
 
-            <Route path="/profile/edit" element={
+          <Route path="/expenses" element={
             <ProtectedRoute>
-              {/* <NavBar/> */}
-              <ProfileForm />
+              <NavBar />
+              <ExpensesList />
             </ProtectedRoute>
-
-            
           } />
-          {/* <Route path='/profile' element={<Profile/>}/> */}
+          <Route path="/expenses/add" element={
+            <ProtectedRoute>
+              <NavBar />
+              <AddExpense />
+            </ProtectedRoute>
+          } />
+          <Route path="/categories" element={
+            <ProtectedRoute>
+              <NavBar />
+              <Category />
+            </ProtectedRoute>
+          } />
         </Routes>
-          {/* <Profile/> */}
       </div>
     </Router>
   )
