@@ -39,8 +39,11 @@ const Category = () => {
 
     return (
         <div className='main-content'>
-            <h1>Categories</h1>
-            <button onClick={handleAddClick}>Add New Category</button>
+            <div className='list-header-title'>
+                <h1>Categories</h1>
+                <button className='add-category-btn' onClick={handleAddClick}>+ Add Category</button>
+            </div>
+
             {
                 formIsShown
                     ?
@@ -48,7 +51,7 @@ const Category = () => {
                     :
                     null
             }
-            <CategoryList categories={categories} fetchCategories={fetchCategories} handleEditClick={handleEditClick} setEditCategory={setEditCategory} setFormIsShown={setFormIsShown}/>
+            <CategoryList categories={categories} fetchCategories={fetchCategories} handleEditClick={handleEditClick} setEditCategory={setEditCategory} setFormIsShown={setFormIsShown} />
 
         </div>
     )
