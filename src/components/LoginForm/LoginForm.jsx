@@ -1,4 +1,4 @@
-
+import '../../../public/styles/auth.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
@@ -26,20 +26,22 @@ function LoginForm({ onLogin }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
+    <form className='auth-form' onSubmit={handleSubmit}>
+      <h2 className='auth-title'>Login</h2>
       <input 
+        className='auth-input'
         placeholder="Username"
         value={username}
         onChange={event => setUsername(event.target.value)}
       />
       <input 
+        className='auth-input'
         placeholder="Password"
         type="password"
         value={password}
         onChange={event => setPassword(event.target.value)}
       />
-      <button type="submit">Login</button>
+      <button className='auth-button' type="submit">Login</button>
     </form>
   )
 }

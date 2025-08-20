@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
+import '../../../public/styles/auth.css'
 
 function SignUp({ onSignUp }) {
   const [name, setName] = useState('')
@@ -36,10 +37,11 @@ function SignUp({ onSignUp }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Sign Up</h2>
+    <form onSubmit={handleSubmit} className='auth-form'>
+      <h2 className='auth-title'>Sign Up</h2>
 
       <input
+        className='auth-input'
         placeholder="Name"
         value={name}
         onChange={event => setName(event.target.value)}
@@ -47,6 +49,7 @@ function SignUp({ onSignUp }) {
       />
 
       <input
+        className='auth-input'
         placeholder="Username"
         value={username}
         onChange={event => setUsername(event.target.value)}
@@ -54,6 +57,7 @@ function SignUp({ onSignUp }) {
       />
 
       <input
+        className='auth-input'
         placeholder="Password"
         type="password"
         value={password}
@@ -62,12 +66,13 @@ function SignUp({ onSignUp }) {
       />
 
       <input
+        className='auth-file'
         type="file"
         accept="image/*"
         onChange={event => setProfilePic(event.target.files[0])}
       />
 
-      <button type="submit">Sign Up</button>
+      <button className='auth-button' type="submit">Sign Up</button>
     </form>
   )
 }
