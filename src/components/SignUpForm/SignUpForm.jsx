@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 import '../../../public/styles/auth.css'
+import {Link} from 'react-router'
 
 function SignUp({ onSignUp }) {
   const [name, setName] = useState('')
