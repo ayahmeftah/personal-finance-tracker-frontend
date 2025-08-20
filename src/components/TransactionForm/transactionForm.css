@@ -10,7 +10,7 @@
 }
 
 .transaction-title {
-    text-align: center;
+    /* text-align: center; */
     font-size: 1.7rem;
     margin-bottom: 24px;
     color: black;
@@ -42,7 +42,7 @@
     align-items: center;
 }
 
-.transaction-button {
+.add-button {
     padding: 12px;
     background: #6c63ff;
     color: #fff;
@@ -52,6 +52,20 @@
     transition: background 0.2s;
 }
 
-.transaction-button:hover {
+.add-button:hover {
+    background: #574bdb;
+}
+
+.cancel-button {
+    padding: 12px;
+    background: grey;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1erm;
+    transition: background 0.2s;
+}
+
+.cancel-button:hover {
     background: #574bdb;
 }

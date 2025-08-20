@@ -105,7 +105,8 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
 
                 </div>
 
-                <button type="submit" className='transaction-button'>{editingTransaction ? "Update" : "Add"} {transactionType}</button>
+                <button type="submit" className='add-button'>{editingTransaction ? "Update" : "Add"} {transactionType}</button>
+                <button type='submit' className='cancel-button'>Cancel</button>
             </form>
         </div>
     )
