@@ -77,21 +77,22 @@ const ProfileForm = ({ userId }) => {
             <h2>Update User Profile</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name</label>
-                <input name='name' value={formData.name} onChange={handleChange} placeholder='name'></input>
+                <input name='name' value={formData.name} onChange={handleChange} placeholder='name' id='name'></input>
                 <label htmlFor="username">Username</label>
-                <input name='username' value={formData.username} onChange={handleChange} placeholder='username'></input>
+                <input name='username' value={formData.username} onChange={handleChange} placeholder='username' id='username'></input>
                 <label htmlFor="profilePic">Change Profile Picture</label>
-                <input name='profilePic' onChange={handlePictureChange} placeholder='Profile Picture' accept="image/*" type='file'></input>
+                <input name='profilePic' onChange={handlePictureChange} placeholder='Profile Picture' accept="image/*" type='file' id='profilePic'></input>
                 <input
                     type="checkbox"
                     checked={removePic}
                     onChange={(event) => setRemovePic(event.target.checked)}
+                    id='removePic'
                 />
-                <label>Remove current picture</label>
+                <label htmlFor='removePic'>Remove current picture</label>
                 <hr />
-                <label for="currentPassword" class="form-label">Current Password</label>
+                <label htmlFor="currentPassword" className="form-label">Current Password</label>
                 <input type="password" name="currentPassword" id="currentPassword"></input>
-                <label for="newPassword" class="form-label">New Password</label>
+                <label htmlFor="newPassword" className="form-label">New Password</label>
                 <input type="password" name="newPassword" id="newPassword"></input>
                 <button>Save</button>
             </form>

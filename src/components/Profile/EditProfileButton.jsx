@@ -1,7 +1,7 @@
 const EditProfileButton = ({handleEditClick, userId}) => {
     return (
         <>
-            <button onClick={() => handleEditClick(userId)}>Update Profile</button>
+            <button onClick={() => handleEditClick(userId)}>Edit Profile</button>
         </>
     )
 }

@@ -36,12 +36,12 @@ const Profile = () => {
 
     return (
         <div className='main-content'>
-            <h1>welcome, {user.username}</h1>
+            <h1>Welcome, {user.name}</h1>
             <img
                 src={user.profilePic || "/images/default-profile-img.jpg"}
                 alt="Profile"
             />
-            <h2>{user.name}</h2>
+            <h2>@{user.username}</h2>
             <EditProfileButton userId={user._id} handleEditClick={handleEditClick} editUser={editUser} />
             <DeleteProfileButton userId={user._id} handleDelete={handleDelete} />
         </div>
