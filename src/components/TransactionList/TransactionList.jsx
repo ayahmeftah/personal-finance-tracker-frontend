@@ -29,9 +29,42 @@ const TransactionList = ({ transactionType }) => {
         selectedCategory === "all" ? transactions
             : transactions.filter(transaction => transaction.categoryId?._id === selectedCategory)
 
+    /*
+    This code is refrenced from stackoverflow foe downloading transactions
+    https://stackoverflow.com/questions/14964035/how-to-export-javascript-array-info-to-csv-on-client-side
+    */
+    const downloadCSV = () => {
+        if (!transactions || transactions.length === 0) return
+
+        const headers = ["Name", "Category", "Type", "Amount", "Date"]
+        const rows = transactions.map(t => [
+            t.name,
+            t.categoryId?.name || "",
+            t.transactionType,
+            t.amount,
+            new Date(t.date).toLocaleDateString("en-GB")
+        ])
+
+        const csvContent = [
+            headers.join(","),
+            ...rows.map(r => r.join(","))
+        ].join("\n")
+
+        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" })
+        const url = URL.createObjectURL(blob)
+        const link = document.createElement("a")
+        link.setAttribute("href", url)
+        const filename = `${transactionType}_report.csv`
+        link.setAttribute("download", filename)
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+    }
+
     return (
         <div className="transaction-list-card">
             <div className="transaction-list-header">
+                <button className='download-btn' onClick={downloadCSV}>Download Report</button>
                 <select
                     value={selectedCategory}
                     onChange={(event) => setSelectedCategory(event.target.value)}
@@ -44,6 +77,7 @@ const TransactionList = ({ transactionType }) => {
                         </option>
                     ))}
                 </select>
+
 
             </div>
 
