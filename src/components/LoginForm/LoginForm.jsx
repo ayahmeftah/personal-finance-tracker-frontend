@@ -26,6 +26,7 @@ function LoginForm({ onLogin }) {
   }
 
   return (
+    <div className='container'>
     <form className='auth-form' onSubmit={handleSubmit}>
       <h2 className='auth-title'>Login</h2>
       <input 
@@ -43,6 +44,7 @@ function LoginForm({ onLogin }) {
       />
       <button className='auth-button' type="submit">Login</button>
     </form>
+    </div>
   )
 }
 

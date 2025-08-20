@@ -37,6 +37,7 @@ function SignUp({ onSignUp }) {
   }
 
   return (
+    <div className='container'>
     <form onSubmit={handleSubmit} className='auth-form'>
       <h2 className='auth-title'>Sign Up</h2>
 
@@ -74,6 +75,7 @@ function SignUp({ onSignUp }) {
 
       <button className='auth-button' type="submit">Sign Up</button>
     </form>
+    </div>
   )
 }
 
