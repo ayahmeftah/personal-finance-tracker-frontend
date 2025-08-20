@@ -5,6 +5,9 @@ import userCalls from '../../../lib/user-api'
 const ProfileForm = ({userId}) => {
     const navigate = useNavigate()
     const [currentUser, setCurrentUser] = useState(null)
+    // const [picState, setPicState] = useState({
+    //     profilePic: ''
+    // })
     const [selectedFile, setSelectedFile] = useState(null)
     const [formData, setFormData] = useState({
         name: '',
@@ -17,6 +20,7 @@ const ProfileForm = ({userId}) => {
             try {
                 const data = await userCalls.getUser()
                 setCurrentUser(data)
+                const newPic = await userCalls.removeProfilePic
                 setFormData({
                     name: data.name || '',
                     username: data.username || '',
@@ -34,6 +38,14 @@ const ProfileForm = ({userId}) => {
     }
 
     const handlePictureChange = (event) => {
+        // let reader = new FileReader()
+        // reader.readAsDataURL(event.target.files[0])
+        // reader.onload = (event) => {
+        //     let img = event.target.result
+        //     setPicState({
+        //         profilePic: img
+        //     })
+        // }
         setSelectedFile(event.target.files[0])
     }
 
