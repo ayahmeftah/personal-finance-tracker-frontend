@@ -1,11 +1,12 @@
 import EditCategoryButton from "../EditCategoryButton/EditCategoryButton.jsx"
 import { BeatLoader } from 'react-spinners'
 import DeleteCategoryButton from "../DeleteCategoryButton/DeleteCategoryButton.jsx"
+import './CategoryList.css'
 
 const CategoryList = (props) => {
 
     return (
-        <>
+        <div className="category-list-card">
             {
                 props.loading ? (
                     <BeatLoader />
@@ -15,12 +16,14 @@ const CategoryList = (props) => {
                         (
                             props.categories.map((category) => (
                                 <li key={category._id}>
-                                    <p>
-                                        {category.emoji ? <span>{category.emoji} </span> : '💰'}
-                                        {category.name}
-                                    </p>
-                                    <p>{category.type}</p>
-                                    <div>
+                                    <div className="category-info">
+                                        <span className="emoji">{category.emoji ? <span>{category.emoji} </span> : '💰'}</span>
+                                        <div>
+                                            <span className="name">{category.name}</span>
+                                            <span className="type">{category.type}</span>
+                                        </div>
+                                    </div>
+                                    <div className="action-buttons">
                                         <EditCategoryButton
                                             categoryId={category._id}
                                             fetchCategories={props.fetchCategories}
@@ -35,10 +38,10 @@ const CategoryList = (props) => {
                                 </li>
                             ))
                         ) : (
-                            <p>No categories yet!</p>
+                            <p className="empty-text">No categories yet!</p>
                         )
             }
-        </>
+        </div>
     )
 }
 
