@@ -69,3 +69,7 @@
 .cancel-button:hover {
     background: #574bdb;
 }
+label {
+    font-weight: bold;
+    font-size: 13px;
+}

@@ -65,6 +65,7 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
         <div className='transaction-form-container'>
             <h1 className='transaction-title'>{editingTransaction ? "Update" : "Add"} {transactionType}</h1>
             <form onSubmit={handleSubmit} className='transaction-form'>
+                <label htmlFor='name'>Transaction Name:</label>
                 <input
                     className='transaction-input'
                     name="name"
@@ -73,6 +74,7 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
                     placeholder="Transaction name"
                     required
                 />
+                <label htmlFor='amount'>Amount:</label>
                 <input
                     className='transaction-input'
                     name="amount"
@@ -82,6 +84,7 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
                     placeholder="Amount"
                     required
                 />
+                <label htmlFor='data'>Transaction Date:</label>
                 <input
                     className='transaction-input'
                     name="date"
@@ -90,6 +93,7 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
                     onChange={handleChange}
                     required
                 />
+                <label htmlFor='category'>Transaction Category:</label>
                 <div style={{ display: "flex", gap: "8px" }} className='transaction-input-select'>
                     <select
                         className='transaction-select'
