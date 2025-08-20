@@ -3,6 +3,7 @@ import transactionsCalls from "../../../lib/transaction-api"
 import categoriesCalls from "../../../lib/category-api"
 import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router'
+import './TransactionForm.css'
 
 const TransactionForm = ({ transactionType, navigateTo }) => {
     const location = useLocation()
@@ -61,10 +62,11 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
     }
 
     return (
-        <div className='main-content'>
-            <h1>{editingTransaction ? "Update" : "Add"} {transactionType}</h1>
-            <form onSubmit={handleSubmit}>
+        <div className='transaction-form-container'>
+            <h1 className='transaction-title'>{editingTransaction ? "Update" : "Add"} {transactionType}</h1>
+            <form onSubmit={handleSubmit} className='transaction-form'>
                 <input
+                    className='transaction-input'
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
@@ -72,6 +74,7 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
                     required
                 />
                 <input
+                    className='transaction-input'
                     name="amount"
                     type="number"
                     value={formData.amount}
@@ -80,14 +83,16 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
                     required
                 />
                 <input
+                    className='transaction-input'
                     name="date"
                     type="date"
                     value={formData.date}
                     onChange={handleChange}
                     required
                 />
-                <div style={{ display: "flex", gap: "8px" }}>
+                <div style={{ display: "flex", gap: "8px" }} className='transaction-input-select'>
                     <select
+                        className='transaction-select'
                         name="categoryId"
                         value={formData.categoryId}
                         onChange={handleChange}
@@ -100,7 +105,8 @@ const TransactionForm = ({ transactionType, navigateTo }) => {
 
                 </div>
 
-                <button type="submit">{editingTransaction ? "Update" : "Add"} {transactionType}</button>
+                <button type="submit" className='add-button'>{editingTransaction ? "Update" : "Add"} {transactionType}</button>
+                <button type='submit' className='cancel-button'>Cancel</button>
             </form>
         </div>
     )

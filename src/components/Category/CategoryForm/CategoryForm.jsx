@@ -1,6 +1,7 @@
 import categoryCalls from '../../../../lib/category-api'
 import { useState, useEffect } from 'react'
 import EmojiPicker from 'emoji-picker-react'
+import './CategoryForm.css'
 
 const CategoryForm = (props) => {
 
@@ -62,41 +63,43 @@ const CategoryForm = (props) => {
     }
 
     return (
-        <>
-            <h1>{props.editCategory && props.editCategory._id ? 'Update Category' : 'Add Category'}</h1>
-            <form onSubmit={handleSubmitForm} >
-                <label htmlFor="name">Category Name: </label>
+        <div className='category-form-container'>
+            <h1 className='category-title'>{props.editCategory && props.editCategory._id ? 'Update Category' : 'Add Category'}</h1>
+            <form onSubmit={handleSubmitForm}  className='category-form'>
+                <label htmlFor="name"  className='category-label'>Category Name: </label>
                 <input
+                    className='category-input'
                     type='text'
                     name='name'
                     id='name'
                     value={formData.name}
                     onChange={handleFormChange}
                 />
-                <label htmlFor="select-category-type">Category Type: </label>
+                <label htmlFor="select-category-type"  className='category-label'>Category Type: </label>
                 <select
+                    className='category-select'
                     name='type'
                     id='select-category-type'
                     value={formData.type}
                     onChange={handleFormChange}
                 >
-                    <option value=''>Select type</option>
-                    <option value='income'>Income</option>
-                    <option value='expense'>Expense</option>
+                    <option value=''  className='category-option'>Select type</option>
+                    <option value='income'  className='category-option'>Income</option>
+                    <option value='expense'  className='category-option'>Expense</option>
                 </select>
-                <label>Category Emoji: </label>
+                <label  className='category-label'>Category Emoji: </label>
                 <div>
-                    <button type="button" onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
+                    <button type="button" onClick={() => setShowEmojiPicker(!showEmojiPicker)}  className='category-button'>
                         {formData.emoji || 'Pick Emoji'}
                     </button>
                 </div>
                 {showEmojiPicker && (
                     <EmojiPicker onEmojiClick={handleEmojiClick} />
                 )}
-                <button type='submit'>{props.editCategory && props.editCategory._id ? 'Update' : 'Add'}</button>
-                <button onClick={() => props.setFormIsShown(false)}>Cancel</button>
+                <button type='submit'  className='category-button'>{props.editCategory && props.editCategory._id ? 'Update' : 'Add'}</button>
+                <button onClick={() => props.setFormIsShown(false)}  className='category-button'>Cancel</button>
             </form>
-        </>
+        </div>
     )
 }
 

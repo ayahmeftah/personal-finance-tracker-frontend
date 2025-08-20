@@ -1,0 +1,67 @@
+.category-form-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 32px 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.category-title {
+  font-size: 1.7rem;
+  margin-bottom: 24px;
+  color: black;
+}
+
+.category-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.category-input,
+.category-select {
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.category-input:focus,
+.category-select:focus {
+  border-color: #3182ce;
+  outline: none;
+}
+
+.category-button {
+  padding: 12px;
+  background: #6c63ff;  
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.category-button:hover {
+  background: #574bdb; 
+}
+
+.category-button.cancel {
+  background: grey;
+}
+.category-button.cancel:hover {
+  background: grey;   
+}
+
+.category-button + .category-button {
+  background: grey;
+}
+.category-button + .category-button:hover {
+  background: rgba(41, 40, 40, 0.226);
+}
+
+.EmojiPickerReact {
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
