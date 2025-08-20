@@ -1,7 +1,8 @@
-import '../../../public/styles/auth.css'
+
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
+import '../SignUpForm/auth.css'
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState('')
