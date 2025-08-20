@@ -87,6 +87,8 @@ The backend repository can be found here:
 - **Node.js** – Runtime environment  
 - **Express** – Backend framework  
 - **MongoDB** – Database for storing data 
+- **React Router** – Routing between pages  
+- **Axios** – API calls
 
 ---
 
