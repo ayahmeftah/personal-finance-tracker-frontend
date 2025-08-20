@@ -37,6 +37,9 @@ The backend repository can be found here:
 
 ## Getting Started  
 
+> [!NOTE]
+> Backend should be running at the same time the frontend is running
+
 ### Prerequisites  
 - Node.js and npm installed  
 
