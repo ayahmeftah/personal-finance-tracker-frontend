@@ -92,6 +92,8 @@ The backend repository can be found here:
 - **MongoDB** – Database for storing data 
 - **React Router** – Routing between pages  
 - **Axios** – API calls
+- **Cloudinary** - storage for images
+- **Multer** - middleware to upload images
 
 ---
 
