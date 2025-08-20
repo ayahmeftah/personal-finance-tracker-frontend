@@ -6,15 +6,15 @@
     flex: 1;
 }
 
-
 .filter-select {
     margin-bottom: 15px;
     padding: 10px 10px;
     border-radius: 8px;
-    border: 1px solid #3f3f3f;
+    border: 1px solid #828080;
     font-size: 14px;
     width: 250px;
-    margin-left: 80%;
+    background-color: #eeeeee;
+    color: #3f3f3f;
 }
 
 .add-transaction-btn {
@@ -106,20 +106,40 @@
 }
 
 .list-header-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-.delete-tran{
+.delete-tran {
     background-color: transparent;
     color: #f44336;
     padding-left: 3px;
 }
 
-.edit-tran{
+.edit-tran {
     background-color: transparent;
-    color:cadetblue;
+    color: cadetblue;
     padding-right: 3px;
+}
+
+.download-btn {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: #3f3f3f;
+    background-color: transparent;
+}
+
+.download-btn:hover{
+    color:#888888;
+    text-decoration: underline;
+}
+
+.transaction-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }

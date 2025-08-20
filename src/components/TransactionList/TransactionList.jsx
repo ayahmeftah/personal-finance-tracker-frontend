@@ -4,6 +4,7 @@ import transactionsCalls from '../../../lib/transaction-api'
 import EditTransactionButton from './EditTransactionButton'
 import DeleteTransactionButton from './DeleteTransactionButton'
 import './TransactionList.css'
+import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined';
 
 
 const TransactionList = ({ transactionType }) => {
@@ -64,7 +65,7 @@ const TransactionList = ({ transactionType }) => {
     return (
         <div className="transaction-list-card">
             <div className="transaction-list-header">
-                <button className='download-btn' onClick={downloadCSV}>Download Report</button>
+                <button className='download-btn' onClick={downloadCSV}><DownloadOutlinedIcon/> Download</button>
                 <select
                     value={selectedCategory}
                     onChange={(event) => setSelectedCategory(event.target.value)}
