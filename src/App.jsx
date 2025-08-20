@@ -87,13 +87,11 @@ const App = () => {
           } />
           <Route path="/profile" element={
             <ProtectedRoute>
-              <NavBar />
               <Profile />
             </ProtectedRoute>
           } />
           <Route path="/profile/edit" element={
             <ProtectedRoute>
-              <NavBar />
               <ProfileForm />
             </ProtectedRoute>
           } />

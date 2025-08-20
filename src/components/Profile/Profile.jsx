@@ -44,6 +44,7 @@ const Profile = () => {
             <h2>@{user.username}</h2>
             <EditProfileButton userId={user._id} handleEditClick={handleEditClick} editUser={editUser} />
             <DeleteProfileButton userId={user._id} handleDelete={handleDelete} />
+            <button onClick={()=>navigate("/")}>Back to Dashboard</button>
         </div>
     )
 }

@@ -94,7 +94,8 @@ const ProfileForm = ({ userId }) => {
                 <input type="password" name="currentPassword" id="currentPassword"></input>
                 <label htmlFor="newPassword" className="form-label">New Password</label>
                 <input type="password" name="newPassword" id="newPassword"></input>
-                <button>Save</button>
+                <button type='submit'>Save</button>
+                <button onClick={()=> navigate("/profile")}>Cancel</button>
             </form>
         </div>
     )
