@@ -28,6 +28,7 @@ function LoginForm({ onLogin }) {
   return (
     <div className='container'>
     <form className='auth-form' onSubmit={handleSubmit}>
+      <img src='public/images/logo.jpg' alt='logo' className='auth-logo'></img>
       <h2 className='auth-title'>Login</h2>
       <input 
         className='auth-input'

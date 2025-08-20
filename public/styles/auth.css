@@ -67,4 +67,10 @@
   background-color: #2563eb;
 }
 
+.auth-logo {
+  display: block;
+  margin: 0 auto 20px auto;
+  width: 140px;
+  height: auto; 
 
+}

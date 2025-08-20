@@ -39,6 +39,7 @@ function SignUp({ onSignUp }) {
   return (
     <div className='container'>
     <form onSubmit={handleSubmit} className='auth-form'>
+            <img src='public/images/logo.jpg' alt='logo' className='auth-logo'></img>
       <h2 className='auth-title'>Sign Up</h2>
 
       <input
