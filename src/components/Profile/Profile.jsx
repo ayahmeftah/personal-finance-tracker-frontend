@@ -7,6 +7,7 @@ import DeleteProfileButton from './DeleteProfileButton'
 const Profile = () => {
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
+    const [editUser, setEditUser] = useState(null)
 
     useEffect(() => {
         const getUser = async () => {
@@ -47,7 +48,7 @@ const Profile = () => {
                 <img src={user.profilePic} alt={userCalls.profilePicPublicId}/>
             ) : null }
             <h2>{user.name}</h2>
-            <EditProfileButton userId={user._id} handleEditClick={handleEditClick}/>
+            <EditProfileButton userId={user._id} handleEditClick={handleEditClick} editUser={editUser}/>
             <DeleteProfileButton userId={user._id} handleDelete={handleDelete}/>
         </>
     )
