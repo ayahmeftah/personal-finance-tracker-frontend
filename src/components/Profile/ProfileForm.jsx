@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import userCalls from '../../../lib/user-api'
-import './Profile.css'
+import './ProfileForm.css'
 const ProfileForm = ({ userId }) => {
     const navigate = useNavigate()
     const [currentUser, setCurrentUser] = useState(null)
