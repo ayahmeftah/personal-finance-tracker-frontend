@@ -13,6 +13,8 @@ import AddExpense from './components/AddExpense/AddExpense'
 import IncomesList from './components/IncomesList/IncomesList'
 import AddIncome from './components/AddIncome/AddIncome'
 import Category from './components/Category/Category'
+import Profile from './components/Profile/Profile'
+import ProfileForm from './components/Profile/ProfileForm'
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -82,6 +84,18 @@ const App = () => {
             <ProtectedRoute>
               <NavBar />
               <Category />
+            </ProtectedRoute>
+          } />
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <NavBar />
+              <Profile />
+            </ProtectedRoute>
+          } />
+          <Route path="/profile/edit" element={
+            <ProtectedRoute>
+              <NavBar />
+              <ProfileForm />
             </ProtectedRoute>
           } />
         </Routes>
