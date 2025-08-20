@@ -1,5 +1,6 @@
 import React from 'react'
 import transactionsCalls from '../../../lib/transaction-api'
+import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 
 const DeleteTransactionButton = ({ transactionID, getTransactionsByType }) => {
 
@@ -10,7 +11,7 @@ const DeleteTransactionButton = ({ transactionID, getTransactionsByType }) => {
 
     return (
         <div>
-            <button onClick={() => handleDelete(transactionID)}>Delete</button>
+            <button onClick={() => handleDelete(transactionID)}><HighlightOffOutlinedIcon/></button>
         </div>
     )
 }

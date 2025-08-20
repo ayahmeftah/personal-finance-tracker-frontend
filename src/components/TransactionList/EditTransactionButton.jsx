@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
+import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 
 const EditTransactionButton = ({transactionType, transactionToEdit}) => {
     const navigate = useNavigate()
@@ -10,7 +11,7 @@ const EditTransactionButton = ({transactionType, transactionToEdit}) => {
 
     return (
         <div>
-            <button onClick={()=>handleEdit(transactionToEdit)}>Edit</button>
+            <button onClick={()=>handleEdit(transactionToEdit)}><ModeEditOutlinedIcon/></button>
         </div>
     )
 }
