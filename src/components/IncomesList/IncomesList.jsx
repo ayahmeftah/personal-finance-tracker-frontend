@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
 import TransactionList from '../TransactionList/TransactionList'
+import '../TransactionList/TransactionList.css'
 
 const IncomesList = () => {
 
@@ -8,10 +9,13 @@ const IncomesList = () => {
 
     return (
         <div className='main-content'>
-            <h1>Incomes</h1>
-            <button onClick={()=> navigate("/incomes/add")}>
-                + Add Income
-            </button>
+            <div className='list-header-title'>
+                <h1>Incomes</h1>
+                <button className='add-transaction-btn' onClick={() => navigate("/incomes/add")}>
+                    + Add Income
+                </button>
+
+            </div>
             <TransactionList transactionType="income" />
         </div>
     )

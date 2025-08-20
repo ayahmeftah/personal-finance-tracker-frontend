@@ -96,7 +96,8 @@
 
 .action-buttons {
     display: flex;
-    gap: 6px;
+    gap: 3px;
+    font-size: 50;
 }
 
 .empty-text {
@@ -109,4 +110,16 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+}
+
+.delete-tran{
+    background-color: transparent;
+    color: #f44336;
+    padding-left: 3px;
+}
+
+.edit-tran{
+    background-color: transparent;
+    color:cadetblue;
+    padding-right: 3px;
 }

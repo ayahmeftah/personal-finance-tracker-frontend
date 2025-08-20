@@ -11,7 +11,7 @@ const EditTransactionButton = ({transactionType, transactionToEdit}) => {
 
     return (
         <div>
-            <button onClick={()=>handleEdit(transactionToEdit)}><ModeEditOutlinedIcon/></button>
+            <button className='edit-tran' onClick={()=>handleEdit(transactionToEdit)}><ModeEditOutlinedIcon sx={{ fontSize: 30 }}/></button>
         </div>
     )
 }
