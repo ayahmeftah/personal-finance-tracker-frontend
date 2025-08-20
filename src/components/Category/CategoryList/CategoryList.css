@@ -1,0 +1,97 @@
+.category-list-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+}
+
+.add-category-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 3%;
+}
+
+.add-category-btn:hover {
+    background-color: #43a047;
+}
+
+.category-list-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-list-card li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eeeeee;
+    gap: 10px;
+}
+
+.category-list-card li:last-child {
+    border-bottom: none;
+}
+
+.category-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.category-info .name {
+    font-weight: 500;
+}
+
+.category-info .type {
+    display: block;
+    font-size: 12px;
+    color: #888888;
+}
+
+.emoji {
+    font-size: 25px;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: #f6ecec;
+    margin-right: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 3px;
+    font-size: 50;
+}
+
+.empty-text {
+    color: #888;
+    font-style: italic;
+}
+
+.list-header-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.delete-tran {
+    background-color: transparent;
+    color: #f44336;
+    padding-left: 3px;
+}
+
+.edit-tran {
+    background-color: transparent;
+    color: cadetblue;
+    padding-right: 3px;
+}

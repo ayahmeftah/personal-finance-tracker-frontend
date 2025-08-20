@@ -1,4 +1,5 @@
 import categoryCalls from '../../../../lib/category-api'
+import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 
 const DeleteCategoryButton = ({ categoryId, fetchCategories }) => {
     const handleDeleteCategory = async (id) => {
@@ -8,7 +9,7 @@ const DeleteCategoryButton = ({ categoryId, fetchCategories }) => {
 
     return (
         <>
-            <button onClick={()=> handleDeleteCategory(categoryId)}>Delete</button>
+            <button className='delete-tran' onClick={()=> handleDeleteCategory(categoryId)}><HighlightOffOutlinedIcon sx={{ fontSize: 30 }}/></button>
         </>
     )
 }
