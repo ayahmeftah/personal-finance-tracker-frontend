@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import userCalls from '../../../lib/user-api'
-
+import './ProfileForm.css'
 const ProfileForm = ({ userId }) => {
     const navigate = useNavigate()
     const [currentUser, setCurrentUser] = useState(null)
@@ -73,29 +73,29 @@ const ProfileForm = ({ userId }) => {
     }
 
     return (
-        <div className='main-content'>
-            <h2>Update User Profile</h2>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name</label>
-                <input name='name' value={formData.name} onChange={handleChange} placeholder='name' id='name'></input>
-                <label htmlFor="username">Username</label>
-                <input name='username' value={formData.username} onChange={handleChange} placeholder='username' id='username'></input>
-                <label htmlFor="profilePic">Change Profile Picture</label>
-                <input name='profilePic' onChange={handlePictureChange} placeholder='Profile Picture' accept="image/*" type='file' id='profilePic'></input>
+        <div className='profile-container'>
+            <h2 className='profile-title'>Update User Profile</h2>
+            <form onSubmit={handleSubmit} className='profile-form'>
+                <label htmlFor="name" className='profile-label'>Name</label>
+                <input name='name' value={formData.name} onChange={handleChange} placeholder='name' id='name'  className='profile-input'></input>
+                <label htmlFor="username"  className='profile-label'>Username</label>
+                <input name='username' value={formData.username} onChange={handleChange} placeholder='username' id='username'  className='profile-input'></input>
+                <label className='profile-label'htmlFor="profilePic">Change Profile Picture</label>
+                <input className='profile-input'name='profilePic' onChange={handlePictureChange} placeholder='Profile Picture' accept="image/*" type='file' id='profilePic'></input>
                 <input
+                    className='profile-input'
                     type="checkbox"
                     checked={removePic}
                     onChange={(event) => setRemovePic(event.target.checked)}
                     id='removePic'
                 />
-                <label htmlFor='removePic'>Remove current picture</label>
-                <hr />
-                <label htmlFor="currentPassword" className="form-label">Current Password</label>
-                <input type="password" name="currentPassword" id="currentPassword"></input>
-                <label htmlFor="newPassword" className="form-label">New Password</label>
-                <input type="password" name="newPassword" id="newPassword"></input>
-                <button type='submit'>Save</button>
-                <button onClick={()=> navigate("/profile")}>Cancel</button>
+                <label htmlFor='removePic' className='profile-label'>Remove current picture</label>
+                {/* <label htmlFor="currentPassword" className='profile-label'>Current Password</label>
+                <input type="password" name="currentPassword" id="currentPassword" className='profile-input'></input>
+                <label htmlFor="newPassword" className='profile-label'>New Password</label>
+                <input type="password" name="newPassword" id="newPassword" className='profile-input'></input> */}
+                <button type='submit' className='profile-button save-btn'>Save</button>
+                <button onClick={()=> navigate("/profile")} className='profile-button'>Cancel</button>
             </form>
         </div>
     )
