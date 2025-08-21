@@ -14,6 +14,11 @@ Below are some screeshots of the website
 
 ---
 
+Below is our ERD
+<img width="1250" height="703" alt="Image" src="https://github.com/user-attachments/assets/ed3d4503-856d-4947-90ad-916be7982449" />
+
+---
+
 ## Backend Repository  
 The backend repository can be found here:  
 [Personal Finance Tracker - Backend](https://github.com/ayahmeftah/personal-finance-tracker-backend)  
